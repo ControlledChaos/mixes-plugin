@@ -6,7 +6,7 @@
  * the same way that templates can be used for post types.
  * The template is registered in the file header.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -19,7 +19,7 @@
  * @link       https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-page-templates-for-specific-post-types
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Mixes_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -158,9 +158,9 @@ final class Taxonomy_Templates {
 			return;
 		} ?>
 		<div class="form-field custom-taxonomy-template">
-			<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos-plugin' ); ?></label>
+			<label for="custom-taxonomy-template"><?php _e( 'Template', 'mixes-plugin' ); ?></label>
 			<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-				<option value="default"><?php _e( 'Default Template', 'controlled-chaos-plugin' ); ?></option>
+				<option value="default"><?php _e( 'Default Template', 'mixes-plugin' ); ?></option>
 				<?php $this->templates_dropdown( $taxonomy ) ?>
 			</select>
 		</div><?php
@@ -185,11 +185,11 @@ final class Taxonomy_Templates {
 
 		<tr class="form-field custom-taxonomy-template">
 			<th scope="row" valign="top">
-				<label for="custom-taxonomy-template"><?php _e( 'Template', 'controlled-chaos-plugin' ); ?></label>
+				<label for="custom-taxonomy-template"><?php _e( 'Template', 'mixes-plugin' ); ?></label>
 			</th>
 			<td>
 				<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-					<option value="default"><?php _e( 'Default Template', 'controlled-chaos-plugin' ); ?></option>
+					<option value="default"><?php _e( 'Default Template', 'mixes-plugin' ); ?></option>
 					<?php $this->templates_dropdown( $taxonomy, $template ) ?>
 				</select>
 			</td>

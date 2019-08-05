@@ -1,1 +1,1 @@
-# Controlled Chaos Plugin Frontend
+# Monica Mixes Plugin Frontend

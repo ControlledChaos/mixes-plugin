@@ -2,14 +2,14 @@
 /**
  * SCallback for the Schema organization type field.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Field_Callbacks;
+namespace Mixes_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -19,179 +19,179 @@ if ( ! defined( 'WPINC' ) ) {
 $types = [
 
 	// First option save null.
-	null          => __( 'Select one&hellip;', 'controlled-chaos-plugin' ),
-	'Airline'     => __( 'Airline', 'controlled-chaos-plugin' ),
-	'Corporation' => __( 'Corporation', 'controlled-chaos-plugin' ),
+	null          => __( 'Select one&hellip;', 'mixes-plugin' ),
+	'Airline'     => __( 'Airline', 'mixes-plugin' ),
+	'Corporation' => __( 'Corporation', 'mixes-plugin' ),
 
 	// Educational Organizations.
-	'EducationalOrganization' => __( 'Educational Organization', 'controlled-chaos-plugin' ),
-		'CollegeOrUniversity' => __( '— College or University', 'controlled-chaos-plugin' ),
-		'ElementarySchool'    => __( '— Elementary School', 'controlled-chaos-plugin' ),
-		'HighSchool'          => __( '— High School', 'controlled-chaos-plugin' ),
-		'MiddleSchool'        => __( '— Middle School', 'controlled-chaos-plugin' ),
-		'Preschool'           => __( '— Preschool', 'controlled-chaos-plugin' ),
-		'School'              => __( '— School', 'controlled-chaos-plugin' ),
+	'EducationalOrganization' => __( 'Educational Organization', 'mixes-plugin' ),
+		'CollegeOrUniversity' => __( '— College or University', 'mixes-plugin' ),
+		'ElementarySchool'    => __( '— Elementary School', 'mixes-plugin' ),
+		'HighSchool'          => __( '— High School', 'mixes-plugin' ),
+		'MiddleSchool'        => __( '— Middle School', 'mixes-plugin' ),
+		'Preschool'           => __( '— Preschool', 'mixes-plugin' ),
+		'School'              => __( '— School', 'mixes-plugin' ),
 
-	'GovernmentOrganization'  => __( 'Government Organization', 'controlled-chaos-plugin' ),
+	'GovernmentOrganization'  => __( 'Government Organization', 'mixes-plugin' ),
 
 	// Local Businesses.
-	'LocalBusiness' => __( 'Local Business', 'controlled-chaos-plugin' ),
-		'AnimalShelter' => __( '— Animal Shelter', 'controlled-chaos-plugin' ),
+	'LocalBusiness' => __( 'Local Business', 'mixes-plugin' ),
+		'AnimalShelter' => __( '— Animal Shelter', 'mixes-plugin' ),
 
 		// Automotive Businesses.
-		'AutomotiveBusiness' => __( '— Automotive Business', 'controlled-chaos-plugin' ),
-			'AutoBodyShop'     => __( '—— Auto Body Shop', 'controlled-chaos-plugin' ),
-			'AutoDealer'       => __( '—— Auto Dealer', 'controlled-chaos-plugin' ),
-			'AutoPartsStore'   => __( '—— Auto Parts Store', 'controlled-chaos-plugin' ),
-			'AutoRental'       => __( '—— Auto Rental', 'controlled-chaos-plugin' ),
-			'AutoRepair'       => __( '—— Auto Repair', 'controlled-chaos-plugin' ),
-			'AutoWash'         => __( '—— Auto Wash', 'controlled-chaos-plugin' ),
-			'GasStation'       => __( '—— Gas Station', 'controlled-chaos-plugin' ),
-			'MotorcycleDealer' => __( '—— Motorcycle Dealer', 'controlled-chaos-plugin' ),
-			'MotorcycleRepair' => __( '—— Motorcycle Repair', 'controlled-chaos-plugin' ),
+		'AutomotiveBusiness' => __( '— Automotive Business', 'mixes-plugin' ),
+			'AutoBodyShop'     => __( '—— Auto Body Shop', 'mixes-plugin' ),
+			'AutoDealer'       => __( '—— Auto Dealer', 'mixes-plugin' ),
+			'AutoPartsStore'   => __( '—— Auto Parts Store', 'mixes-plugin' ),
+			'AutoRental'       => __( '—— Auto Rental', 'mixes-plugin' ),
+			'AutoRepair'       => __( '—— Auto Repair', 'mixes-plugin' ),
+			'AutoWash'         => __( '—— Auto Wash', 'mixes-plugin' ),
+			'GasStation'       => __( '—— Gas Station', 'mixes-plugin' ),
+			'MotorcycleDealer' => __( '—— Motorcycle Dealer', 'mixes-plugin' ),
+			'MotorcycleRepair' => __( '—— Motorcycle Repair', 'mixes-plugin' ),
 
-		'ChildCare'            => __( '— Child Care', 'controlled-chaos-plugin' ),
-		'Dentist'              => __( '— Dentist', 'controlled-chaos-plugin' ),
-		'DryCleaningOrLaundry' => __( '— Dry Cleaning or Laundry', 'controlled-chaos-plugin' ),
+		'ChildCare'            => __( '— Child Care', 'mixes-plugin' ),
+		'Dentist'              => __( '— Dentist', 'mixes-plugin' ),
+		'DryCleaningOrLaundry' => __( '— Dry Cleaning or Laundry', 'mixes-plugin' ),
 
 		// Emergency Services.
-		'EmergencyService' => __( '— Emergency Service', 'controlled-chaos-plugin' ),
-			'FireStation'   => __( '—— Fire Station', 'controlled-chaos-plugin' ),
-			'Hospital'      => __( '—— Hospital', 'controlled-chaos-plugin' ),
-			'PoliceStation' => __( '—— Police Station', 'controlled-chaos-plugin' ),
+		'EmergencyService' => __( '— Emergency Service', 'mixes-plugin' ),
+			'FireStation'   => __( '—— Fire Station', 'mixes-plugin' ),
+			'Hospital'      => __( '—— Hospital', 'mixes-plugin' ),
+			'PoliceStation' => __( '—— Police Station', 'mixes-plugin' ),
 
-		'EmploymentAgency' => __( '— Employment Agency', 'controlled-chaos-plugin' ),
+		'EmploymentAgency' => __( '— Employment Agency', 'mixes-plugin' ),
 
 		// Entertainment Businesses.
-		'EntertainmentBusiness' => __( '— Entertainment Business', 'controlled-chaos-plugin' ),
-			'AdultEntertainment' => __( '—— Adult Entertainment', 'controlled-chaos-plugin' ),
-			'AmusementPark'      => __( '—— Amusement Park', 'controlled-chaos-plugin' ),
-			'ArtGallery'         => __( '—— Art Gallery', 'controlled-chaos-plugin' ),
-			'Casino'             => __( '—— Casino', 'controlled-chaos-plugin' ),
-			'ComedyClub'         => __( '—— Comedy Club', 'controlled-chaos-plugin' ),
-			'MovieTheater'       => __( '—— Movie Theater', 'controlled-chaos-plugin' ),
-			'NightClub'          => __( '—— Night Club', 'controlled-chaos-plugin' ),
+		'EntertainmentBusiness' => __( '— Entertainment Business', 'mixes-plugin' ),
+			'AdultEntertainment' => __( '—— Adult Entertainment', 'mixes-plugin' ),
+			'AmusementPark'      => __( '—— Amusement Park', 'mixes-plugin' ),
+			'ArtGallery'         => __( '—— Art Gallery', 'mixes-plugin' ),
+			'Casino'             => __( '—— Casino', 'mixes-plugin' ),
+			'ComedyClub'         => __( '—— Comedy Club', 'mixes-plugin' ),
+			'MovieTheater'       => __( '—— Movie Theater', 'mixes-plugin' ),
+			'NightClub'          => __( '—— Night Club', 'mixes-plugin' ),
 
 		// Financial Services.
-		'FinancialService' => __( '— Financial Service', 'controlled-chaos-plugin' ),
-			'AccountingService' => __( '—— Accounting Service', 'controlled-chaos-plugin' ),
-			'AutomatedTeller'   => __( '—— Automated Teller', 'controlled-chaos-plugin' ),
-			'BankOrCreditUnion' => __( '—— Bank or Credit Union', 'controlled-chaos-plugin' ),
-			'InsuranceAgency'   => __( '—— Insurance Agency', 'controlled-chaos-plugin' ),
+		'FinancialService' => __( '— Financial Service', 'mixes-plugin' ),
+			'AccountingService' => __( '—— Accounting Service', 'mixes-plugin' ),
+			'AutomatedTeller'   => __( '—— Automated Teller', 'mixes-plugin' ),
+			'BankOrCreditUnion' => __( '—— Bank or Credit Union', 'mixes-plugin' ),
+			'InsuranceAgency'   => __( '—— Insurance Agency', 'mixes-plugin' ),
 
 		// Food Establishments.
-		'FoodEstablishment' => __( '— Food Establishment', 'controlled-chaos-plugin' ),
-			'Bakery'             => __( '—— Bakery', 'controlled-chaos-plugin' ),
-			'BarOrPub'           => __( '—— Bar or Pub', 'controlled-chaos-plugin' ),
-			'Brewery'            => __( '—— Brewery', 'controlled-chaos-plugin' ),
-			'CafeOrCoffeeShop'   => __( '—— Cafe or Coffee Shop', 'controlled-chaos-plugin' ),
-			'FastFoodRestaurant' => __( '—— Fast Food Restaurant', 'controlled-chaos-plugin' ),
-			'IceCreamShop'       => __( '—— Ice Cream Shop', 'controlled-chaos-plugin' ),
-			'Restaurant'         => __( '—— Restaurant', 'controlled-chaos-plugin' ),
-			'Winery'             => __( '—— Winery', 'controlled-chaos-plugin' ),
+		'FoodEstablishment' => __( '— Food Establishment', 'mixes-plugin' ),
+			'Bakery'             => __( '—— Bakery', 'mixes-plugin' ),
+			'BarOrPub'           => __( '—— Bar or Pub', 'mixes-plugin' ),
+			'Brewery'            => __( '—— Brewery', 'mixes-plugin' ),
+			'CafeOrCoffeeShop'   => __( '—— Cafe or Coffee Shop', 'mixes-plugin' ),
+			'FastFoodRestaurant' => __( '—— Fast Food Restaurant', 'mixes-plugin' ),
+			'IceCreamShop'       => __( '—— Ice Cream Shop', 'mixes-plugin' ),
+			'Restaurant'         => __( '—— Restaurant', 'mixes-plugin' ),
+			'Winery'             => __( '—— Winery', 'mixes-plugin' ),
 
 		// Government Offices.
-		'GovernmentOffice' => __( '— Government Office', 'controlled-chaos-plugin' ),
-			'PostOffice' => __( '—— Post Office', 'controlled-chaos-plugin' ),
+		'GovernmentOffice' => __( '— Government Office', 'mixes-plugin' ),
+			'PostOffice' => __( '—— Post Office', 'mixes-plugin' ),
 
 		// Health and Beauty Businesses.
-		'HealthAndBeautyBusiness' => __( '— Health and Beauty Business', 'controlled-chaos-plugin' ),
-			'BeautySalon'  => __( '—— Beauty Salon', 'controlled-chaos-plugin' ),
-			'DaySpa'       => __( '—— Day Spa', 'controlled-chaos-plugin' ),
-			'HairSalon'    => __( '—— Hair Salon', 'controlled-chaos-plugin' ),
-			'HealthClub'   => __( '—— Health Club', 'controlled-chaos-plugin' ),
-			'NailSalon'    => __( '—— Nail Salon', 'controlled-chaos-plugin' ),
-			'TattooParlor' => __( '—— Tattoo Parlor', 'controlled-chaos-plugin' ),
+		'HealthAndBeautyBusiness' => __( '— Health and Beauty Business', 'mixes-plugin' ),
+			'BeautySalon'  => __( '—— Beauty Salon', 'mixes-plugin' ),
+			'DaySpa'       => __( '—— Day Spa', 'mixes-plugin' ),
+			'HairSalon'    => __( '—— Hair Salon', 'mixes-plugin' ),
+			'HealthClub'   => __( '—— Health Club', 'mixes-plugin' ),
+			'NailSalon'    => __( '—— Nail Salon', 'mixes-plugin' ),
+			'TattooParlor' => __( '—— Tattoo Parlor', 'mixes-plugin' ),
 
 		// Home and Construction Businesses.
-		'HomeAndConstructionBusiness' => __( '— Home and Construction Business', 'controlled-chaos-plugin' ),
-			'Electrician'       => __( '—— Electrician', 'controlled-chaos-plugin' ),
-			'GeneralContractor' => __( '—— General Contractor', 'controlled-chaos-plugin' ),
-			'HVACBusiness'      => __( '—— HVAC Business', 'controlled-chaos-plugin' ),
-			'HousePainter'      => __( '—— House Painter', 'controlled-chaos-plugin' ),
-			'Locksmith'         => __( '—— Locksmith', 'controlled-chaos-plugin' ),
-			'MovingCompany'     => __( '—— MovingCompany', 'controlled-chaos-plugin' ),
-			'Plumber'           => __( '—— Plumber', 'controlled-chaos-plugin' ),
-			'RoofingContractor' => __( '—— Roofing Contractor', 'controlled-chaos-plugin' ),
+		'HomeAndConstructionBusiness' => __( '— Home and Construction Business', 'mixes-plugin' ),
+			'Electrician'       => __( '—— Electrician', 'mixes-plugin' ),
+			'GeneralContractor' => __( '—— General Contractor', 'mixes-plugin' ),
+			'HVACBusiness'      => __( '—— HVAC Business', 'mixes-plugin' ),
+			'HousePainter'      => __( '—— House Painter', 'mixes-plugin' ),
+			'Locksmith'         => __( '—— Locksmith', 'mixes-plugin' ),
+			'MovingCompany'     => __( '—— MovingCompany', 'mixes-plugin' ),
+			'Plumber'           => __( '—— Plumber', 'mixes-plugin' ),
+			'RoofingContractor' => __( '—— Roofing Contractor', 'mixes-plugin' ),
 
-		'InternetCafe' => __( '— Internet Cafe', 'controlled-chaos-plugin' ),
+		'InternetCafe' => __( '— Internet Cafe', 'mixes-plugin' ),
 
 		// Legal Services.
-		'LegalService' => __( '— Legal Service', 'controlled-chaos-plugin' ),
-			'Attorney' => __( '—— Attorney', 'controlled-chaos-plugin' ),
-			'Notary'   => __( '—— Notary', 'controlled-chaos-plugin' ),
+		'LegalService' => __( '— Legal Service', 'mixes-plugin' ),
+			'Attorney' => __( '—— Attorney', 'mixes-plugin' ),
+			'Notary'   => __( '—— Notary', 'mixes-plugin' ),
 
-		'Library' => __( '— Library', 'controlled-chaos-plugin' ),
+		'Library' => __( '— Library', 'mixes-plugin' ),
 
 		// Lodging Businesses.
-		'LodgingBusiness' => __( '— Lodging Business', 'controlled-chaos-plugin' ),
-			'BedAndBreakfast' => __( '—— Bed and Breakfast', 'controlled-chaos-plugin' ),
-			'Campground'      => __( '—— Campground', 'controlled-chaos-plugin' ),
-			'Hostel'          => __( '—— Hostel', 'controlled-chaos-plugin' ),
-			'Hotel'           => __( '—— Hotel', 'controlled-chaos-plugin' ),
-			'Motel'           => __( '—— Motel', 'controlled-chaos-plugin' ),
-			'Resort'          => __( '—— Resort', 'controlled-chaos-plugin' ),
+		'LodgingBusiness' => __( '— Lodging Business', 'mixes-plugin' ),
+			'BedAndBreakfast' => __( '—— Bed and Breakfast', 'mixes-plugin' ),
+			'Campground'      => __( '—— Campground', 'mixes-plugin' ),
+			'Hostel'          => __( '—— Hostel', 'mixes-plugin' ),
+			'Hotel'           => __( '—— Hotel', 'mixes-plugin' ),
+			'Motel'           => __( '—— Motel', 'mixes-plugin' ),
+			'Resort'          => __( '—— Resort', 'mixes-plugin' ),
 
-		'ProfessionalService' => __( '— Professional Service', 'controlled-chaos-plugin' ),
-		'RadioStation'        => __( '— Radio Station', 'controlled-chaos-plugin' ),
-		'RealEstateAgent'     => __( '— Real Estate Agent', 'controlled-chaos-plugin' ),
-		'RecyclingCenter'     => __( '— Recycling Center', 'controlled-chaos-plugin' ),
-		'SelfStorage'         => __( '— Self Storage', 'controlled-chaos-plugin' ),
-		'ShoppingCenter'      => __( '— Shopping Center', 'controlled-chaos-plugin' ),
+		'ProfessionalService' => __( '— Professional Service', 'mixes-plugin' ),
+		'RadioStation'        => __( '— Radio Station', 'mixes-plugin' ),
+		'RealEstateAgent'     => __( '— Real Estate Agent', 'mixes-plugin' ),
+		'RecyclingCenter'     => __( '— Recycling Center', 'mixes-plugin' ),
+		'SelfStorage'         => __( '— Self Storage', 'mixes-plugin' ),
+		'ShoppingCenter'      => __( '— Shopping Center', 'mixes-plugin' ),
 
 		// Sports Activity Locations.
-		'SportsActivityLocation' => __( '— Sports Activity Location', 'controlled-chaos-plugin' ),
-			'BowlingAlley'       => __( '—— Bowling Alley', 'controlled-chaos-plugin' ),
-			'ExerciseGym'        => __( '—— Exercise Gym', 'controlled-chaos-plugin' ),
-			'GolfCourse'         => __( '—— Golf Course', 'controlled-chaos-plugin' ),
-			'HealthClub'         => __( '—— Health Club', 'controlled-chaos-plugin' ),
-			'PublicSwimmingPool' => __( '—— Public Swimming Pool', 'controlled-chaos-plugin' ),
-			'SkiResort'          => __( '—— Ski Resort', 'controlled-chaos-plugin' ),
-			'SportsClub'         => __( '—— Sports Club', 'controlled-chaos-plugin' ),
-			'StadiumOrArena'     => __( '—— Stadium or Arena', 'controlled-chaos-plugin' ),
-			'TennisComplex'      => __( '—— Tennis Complex', 'controlled-chaos-plugin' ),
+		'SportsActivityLocation' => __( '— Sports Activity Location', 'mixes-plugin' ),
+			'BowlingAlley'       => __( '—— Bowling Alley', 'mixes-plugin' ),
+			'ExerciseGym'        => __( '—— Exercise Gym', 'mixes-plugin' ),
+			'GolfCourse'         => __( '—— Golf Course', 'mixes-plugin' ),
+			'HealthClub'         => __( '—— Health Club', 'mixes-plugin' ),
+			'PublicSwimmingPool' => __( '—— Public Swimming Pool', 'mixes-plugin' ),
+			'SkiResort'          => __( '—— Ski Resort', 'mixes-plugin' ),
+			'SportsClub'         => __( '—— Sports Club', 'mixes-plugin' ),
+			'StadiumOrArena'     => __( '—— Stadium or Arena', 'mixes-plugin' ),
+			'TennisComplex'      => __( '—— Tennis Complex', 'mixes-plugin' ),
 
 		// Store types.
-		'Store' => __( '— Store', 'controlled-chaos-plugin' ),
-			'AutoPartsStore'      => __( '—— Auto Parts Store', 'controlled-chaos-plugin' ),
-			'BikeStore'           => __( '—— Bike Store', 'controlled-chaos-plugin' ),
-			'BookStore'           => __( '—— Book Store', 'controlled-chaos-plugin' ),
-			'ClothingStore'       => __( '—— Clothing Store', 'controlled-chaos-plugin' ),
-			'ComputerStore'       => __( '—— Computer Store', 'controlled-chaos-plugin' ),
-			'ConvenienceStore'    => __( '—— Convenience Store', 'controlled-chaos-plugin' ),
-			'DepartmentStore'     => __( '—— Department Store', 'controlled-chaos-plugin' ),
-			'ElectronicsStore'    => __( '—— Electronics Store', 'controlled-chaos-plugin' ),
-			'Florist'             => __( '—— Florist', 'controlled-chaos-plugin' ),
-			'FurnitureStore'      => __( '—— Furniture Store', 'controlled-chaos-plugin' ),
-			'GardenStore'         => __( '—— Garden Store', 'controlled-chaos-plugin' ),
-			'GroceryStore'        => __( '—— Grocery Store', 'controlled-chaos-plugin' ),
-			'HardwareStore'       => __( '—— Hardware Store', 'controlled-chaos-plugin' ),
-			'HobbyShop'           => __( '—— Hobby Shop', 'controlled-chaos-plugin' ),
-			'HomeGoodsStore'      => __( '—— Home Goods Store', 'controlled-chaos-plugin' ),
-			'JewelryStore'        => __( '—— Jewelry Store', 'controlled-chaos-plugin' ),
-			'LiquorStore'         => __( '—— Liquor Store', 'controlled-chaos-plugin' ),
-			'MensClothingStore'   => __( '—— Mens Clothing Store', 'controlled-chaos-plugin' ),
-			'MobilePhoneStore'    => __( '—— Mobile Phone Store', 'controlled-chaos-plugin' ),
-			'MovieRentalStore'    => __( '—— Movie Rental Store', 'controlled-chaos-plugin' ),
-			'MusicStore'          => __( '—— Music Store', 'controlled-chaos-plugin' ),
-			'OfficeEquipmentStore'=> __( '—— Office Equipment Store', 'controlled-chaos-plugin' ),
-			'OutletStore'         => __( '—— Outlet Store', 'controlled-chaos-plugin' ),
-			'PawnShop'            => __( '—— Pawn Shop', 'controlled-chaos-plugin' ),
-			'PetStore'            => __( '—— Pet Store', 'controlled-chaos-plugin' ),
-			'ShoeStore'           => __( '—— Shoe Store', 'controlled-chaos-plugin' ),
-			'SportingGoodsStore'  => __( '—— Sporting Goods Store', 'controlled-chaos-plugin' ),
-			'TireShop'            => __( '—— Tire Shop', 'controlled-chaos-plugin' ),
-			'ToyStore'            => __( '—— Toy Store', 'controlled-chaos-plugin' ),
-			'WholesaleStore'      => __( '—— Wholesale Store', 'controlled-chaos-plugin' ),
+		'Store' => __( '— Store', 'mixes-plugin' ),
+			'AutoPartsStore'      => __( '—— Auto Parts Store', 'mixes-plugin' ),
+			'BikeStore'           => __( '—— Bike Store', 'mixes-plugin' ),
+			'BookStore'           => __( '—— Book Store', 'mixes-plugin' ),
+			'ClothingStore'       => __( '—— Clothing Store', 'mixes-plugin' ),
+			'ComputerStore'       => __( '—— Computer Store', 'mixes-plugin' ),
+			'ConvenienceStore'    => __( '—— Convenience Store', 'mixes-plugin' ),
+			'DepartmentStore'     => __( '—— Department Store', 'mixes-plugin' ),
+			'ElectronicsStore'    => __( '—— Electronics Store', 'mixes-plugin' ),
+			'Florist'             => __( '—— Florist', 'mixes-plugin' ),
+			'FurnitureStore'      => __( '—— Furniture Store', 'mixes-plugin' ),
+			'GardenStore'         => __( '—— Garden Store', 'mixes-plugin' ),
+			'GroceryStore'        => __( '—— Grocery Store', 'mixes-plugin' ),
+			'HardwareStore'       => __( '—— Hardware Store', 'mixes-plugin' ),
+			'HobbyShop'           => __( '—— Hobby Shop', 'mixes-plugin' ),
+			'HomeGoodsStore'      => __( '—— Home Goods Store', 'mixes-plugin' ),
+			'JewelryStore'        => __( '—— Jewelry Store', 'mixes-plugin' ),
+			'LiquorStore'         => __( '—— Liquor Store', 'mixes-plugin' ),
+			'MensClothingStore'   => __( '—— Mens Clothing Store', 'mixes-plugin' ),
+			'MobilePhoneStore'    => __( '—— Mobile Phone Store', 'mixes-plugin' ),
+			'MovieRentalStore'    => __( '—— Movie Rental Store', 'mixes-plugin' ),
+			'MusicStore'          => __( '—— Music Store', 'mixes-plugin' ),
+			'OfficeEquipmentStore'=> __( '—— Office Equipment Store', 'mixes-plugin' ),
+			'OutletStore'         => __( '—— Outlet Store', 'mixes-plugin' ),
+			'PawnShop'            => __( '—— Pawn Shop', 'mixes-plugin' ),
+			'PetStore'            => __( '—— Pet Store', 'mixes-plugin' ),
+			'ShoeStore'           => __( '—— Shoe Store', 'mixes-plugin' ),
+			'SportingGoodsStore'  => __( '—— Sporting Goods Store', 'mixes-plugin' ),
+			'TireShop'            => __( '—— Tire Shop', 'mixes-plugin' ),
+			'ToyStore'            => __( '—— Toy Store', 'mixes-plugin' ),
+			'WholesaleStore'      => __( '—— Wholesale Store', 'mixes-plugin' ),
 
-		'TelevisionStation'        => __( '— Television Station', 'controlled-chaos-plugin' ),
-		'TouristInformationCenter' => __( '— Tourist Information Center', 'controlled-chaos-plugin' ),
-		'TravelAgency'             => __( '— Travel Agency', 'controlled-chaos-plugin' ),
+		'TelevisionStation'        => __( '— Television Station', 'mixes-plugin' ),
+		'TouristInformationCenter' => __( '— Tourist Information Center', 'mixes-plugin' ),
+		'TravelAgency'             => __( '— Travel Agency', 'mixes-plugin' ),
 
-	'MedicalOrganization' => __( 'Medical Organization', 'controlled-chaos-plugin' ),
-	'NGO'                 => __( 'NGO (Non-Governmental Organization', 'controlled-chaos-plugin' ),
-	'PerformingGroup'     => __( 'Performing Group', 'controlled-chaos-plugin' ),
-	'SportsOrganization'  => __( 'Sports Organization', 'controlled-chaos-plugin' )
+	'MedicalOrganization' => __( 'Medical Organization', 'mixes-plugin' ),
+	'NGO'                 => __( 'NGO (Non-Governmental Organization', 'mixes-plugin' ),
+	'PerformingGroup'     => __( 'Performing Group', 'mixes-plugin' ),
+	'SportsOrganization'  => __( 'Sports Organization', 'mixes-plugin' )
 ];
 
 $options = get_option( 'schema_org_type' );
@@ -211,7 +211,7 @@ $html .= sprintf(
 	'<label for="schema_org_type"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 	$args[0],
 	esc_attr( esc_url( 'https://schema.org/docs/full.html#C.Organization' ) ),
-	esc_attr( __( 'Read documentation for organization types', 'controlled-chaos-plugin' ) )
+	esc_attr( __( 'Read documentation for organization types', 'mixes-plugin' ) )
 );
 $html .= '</p>';
 

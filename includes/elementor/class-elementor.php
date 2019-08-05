@@ -7,14 +7,14 @@
  *
  * @link       https://developers.elementor.com/creating-a-new-widget/
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Beaver
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes;
+namespace Mixes_Plugin\Includes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class CCP_Elementor extends \Elementor\Widget_Base {
+class MMP_Elementor extends \Elementor\Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -52,7 +52,7 @@ class CCP_Elementor extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'oEmbed', 'controlled-chaos-plugin' );
+		return __( 'oEmbed', 'mixes-plugin' );
 	}
 
 	/**
@@ -94,7 +94,7 @@ class CCP_Elementor extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'controlled-chaos-plugin' ),
+				'label' => __( 'Content', 'mixes-plugin' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -102,10 +102,10 @@ class CCP_Elementor extends \Elementor\Widget_Base {
 		$this->add_control(
 			'url',
 			[
-				'label' => __( 'URL to embed', 'controlled-chaos-plugin' ),
+				'label' => __( 'URL to embed', 'mixes-plugin' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'url',
-				'placeholder' => __( 'https://your-link.com', 'controlled-chaos-plugin' ),
+				'placeholder' => __( 'https://your-link.com', 'mixes-plugin' ),
 			]
 		);
 
@@ -138,4 +138,4 @@ class CCP_Elementor extends \Elementor\Widget_Base {
 }
 
 // Run the class.
-$ccp_elementor = new CCP_Elementor;
+$mmp_elementor = new MMP_Elementor;

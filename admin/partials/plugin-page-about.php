@@ -6,7 +6,7 @@
  * with WordPress/ClassicPress. Tabs are activated by targeting the `backend-tabbed-content`
  * in this plugin's admin.js file.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Admin\Partials
  *
  * @since      1.0.0
@@ -16,7 +16,7 @@
  * @link       Dashicons https://developer.wordpress.org/resource/dashicons/
  */
 
-namespace CC_Plugin\Admin\Partials;
+namespace Mixes_Plugin\Admin\Partials;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // Get the settings page menu icon option from Site Settings.
-$settings_icon = sanitize_text_field( get_option( 'ccp_site_settings_link_icon' ) );
+$settings_icon = sanitize_text_field( get_option( 'mmp_site_settings_link_icon' ) );
 
 // If it's not empty, use the icon class from the option.
 if ( $settings_icon ) {
@@ -60,7 +60,7 @@ $tabs = [
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
         '#intro',
-        esc_html__( 'Introduction', 'controlled-chaos-plugin' )
+        esc_html__( 'Introduction', 'mixes-plugin' )
 	),
 
 	// Site Settings tab.
@@ -68,66 +68,66 @@ $tabs = [
         '<li><a href="%1s"><span class="dashicons %2s"></span> %3s</a></li>',
 		'#settings',
 		esc_attr( $settings ),
-        esc_html__( 'Site Settings', 'controlled-chaos-plugin' )
+        esc_html__( 'Site Settings', 'mixes-plugin' )
 	),
 
 	// Script Options tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-editor-code"></span> %2s</a></li>',
         '#scripts',
-        esc_html__( 'Script Options', 'controlled-chaos-plugin' )
+        esc_html__( 'Script Options', 'mixes-plugin' )
 	),
 
 	// Media Options tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-admin-media"></span> %2s</a></li>',
         '#media',
-        esc_html__( 'Media Options', 'controlled-chaos-plugin' )
+        esc_html__( 'Media Options', 'mixes-plugin' )
 	),
 
 	// Dev Tools tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
         '#tools',
-        esc_html__( 'Development Tools', 'controlled-chaos-plugin' )
+        esc_html__( 'Development Tools', 'mixes-plugin' )
     ),
 
 ];
 
 // Apply a filter to the tabs array for adding tabs.
-$page_tabs = apply_filters( 'ccp_tabs_page_about', $tabs );
+$page_tabs = apply_filters( 'mmp_tabs_page_about', $tabs );
 
 ?>
 <!-- Default WordPress/ClassicPress page wrapper -->
 <div class="wrap site-plugin-wrap">
 	<!-- Page heading -->
-	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'controlled-chaos-plugin' ) ); ?>
+	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'mixes-plugin' ) ); ?>
 	<!-- Page description -->
-    <p class="description"><?php esc_html_e( 'A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.', 'controlled-chaos-plugin' ); ?></p>
+    <p class="description"><?php esc_html_e( 'A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.', 'mixes-plugin' ); ?></p>
 	<!-- Begin jQuery tabbed content -->
 	<div class="backend-tabbed-content">
 		<ul>
 			<?php echo implode( $page_tabs ); ?>
 		</ul>
 		<?php // Hook for adding tabbed content.
-		do_action( 'ccp_content_page_about_before' ); ?>
+		do_action( 'mmp_content_page_about_before' ); ?>
 		<!-- Begin content -->
 		<div id="intro"><!-- Introduction content -->
-			<?php include_once CCP_PATH . 'admin/partials/plugin-page-intro.php'; ?>
+			<?php include_once MMP_PATH . 'admin/partials/plugin-page-intro.php'; ?>
 		</div>
 		<div id="settings"><!-- Site Settings content -->
-			<?php include_once CCP_PATH . 'admin/partials/plugin-page-site-settings.php'; ?>
+			<?php include_once MMP_PATH . 'admin/partials/plugin-page-site-settings.php'; ?>
 		</div>
 		<div id="scripts"><!-- Script Options content -->
-			<?php include_once CCP_PATH . 'admin/partials//plugin-page-script-options.php'; ?>
+			<?php include_once MMP_PATH . 'admin/partials//plugin-page-script-options.php'; ?>
 		</div>
 		<div id="media"><!-- Media Options content -->
-			<?php include_once CCP_PATH . 'admin/partials/plugin-page-media-options.php'; ?>
+			<?php include_once MMP_PATH . 'admin/partials/plugin-page-media-options.php'; ?>
 		</div>
 		<div id="tools"><!-- Dev Tools content -->
-			<?php include_once CCP_PATH . 'admin/partials/plugin-page-dev-tools.php'; ?>
+			<?php include_once MMP_PATH . 'admin/partials/plugin-page-dev-tools.php'; ?>
 		</div>
 		<?php // Hook for adding tabbed content.
-		do_action( 'ccp_content_page_about_after' ); ?>
+		do_action( 'mmp_content_page_about_after' ); ?>
 	</div><!-- End jQuery tabbed content -->
 </div><!-- End WordPress/ClassicPress page wrapper -->

@@ -2,7 +2,7 @@
 /**
  * Register taxonomies.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -11,7 +11,7 @@
  * @link       https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Mixes_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -55,34 +55,34 @@ final class Taxes_Register {
          * Renaming:
          * Search case "Taxonomy" and replace with your post type singular name.
          * Search case "Taxonomies" and replace with your post type plural name.
-         * Search case "ccp_taxonomy" and replace with your taxonomy database name.
+         * Search case "mmp_taxonomy" and replace with your taxonomy database name.
          * Search case "taxonomies" and replace with your taxonomy permalink slug.
          */
 
         $labels = [
-            'name'                       => __( 'Taxonomies', 'controlled-chaos-plugin' ),
-            'singular_name'              => __( 'Taxonomy', 'controlled-chaos-plugin' ),
-            'menu_name'                  => __( 'Taxonomy', 'controlled-chaos-plugin' ),
-            'all_items'                  => __( 'All Taxonomies', 'controlled-chaos-plugin' ),
-            'edit_item'                  => __( 'Edit Taxonomy', 'controlled-chaos-plugin' ),
-            'view_item'                  => __( 'View Taxonomy', 'controlled-chaos-plugin' ),
-            'update_item'                => __( 'Update Taxonomy', 'controlled-chaos-plugin' ),
-            'add_new_item'               => __( 'Add New Taxonomy', 'controlled-chaos-plugin' ),
-            'new_item_name'              => __( 'New Taxonomy', 'controlled-chaos-plugin' ),
-            'parent_item'                => __( 'Parent Taxonomy', 'controlled-chaos-plugin' ),
-            'parent_item_colon'          => __( 'Parent Taxonomy', 'controlled-chaos-plugin' ),
-            'popular_items'              => __( 'Popular Taxonomies', 'controlled-chaos-plugin' ),
-            'separate_items_with_commas' => __( 'Separate Taxonomies with commas', 'controlled-chaos-plugin' ),
-            'add_or_remove_items'        => __( 'Add or Remove Taxonomies', 'controlled-chaos-plugin' ),
-            'choose_from_most_used'      => __( 'Choose from the most used Taxonomies', 'controlled-chaos-plugin' ),
-            'not_found'                  => __( 'No Taxonomies Found', 'controlled-chaos-plugin' ),
-            'no_terms'                   => __( 'No Taxonomies', 'controlled-chaos-plugin' ),
-            'items_list_navigation'      => __( 'Taxonomies List Navigation', 'controlled-chaos-plugin' ),
-            'items_list'                 => __( 'Taxonomies List', 'controlled-chaos-plugin' )
+            'name'                       => __( 'Taxonomies', 'mixes-plugin' ),
+            'singular_name'              => __( 'Taxonomy', 'mixes-plugin' ),
+            'menu_name'                  => __( 'Taxonomy', 'mixes-plugin' ),
+            'all_items'                  => __( 'All Taxonomies', 'mixes-plugin' ),
+            'edit_item'                  => __( 'Edit Taxonomy', 'mixes-plugin' ),
+            'view_item'                  => __( 'View Taxonomy', 'mixes-plugin' ),
+            'update_item'                => __( 'Update Taxonomy', 'mixes-plugin' ),
+            'add_new_item'               => __( 'Add New Taxonomy', 'mixes-plugin' ),
+            'new_item_name'              => __( 'New Taxonomy', 'mixes-plugin' ),
+            'parent_item'                => __( 'Parent Taxonomy', 'mixes-plugin' ),
+            'parent_item_colon'          => __( 'Parent Taxonomy', 'mixes-plugin' ),
+            'popular_items'              => __( 'Popular Taxonomies', 'mixes-plugin' ),
+            'separate_items_with_commas' => __( 'Separate Taxonomies with commas', 'mixes-plugin' ),
+            'add_or_remove_items'        => __( 'Add or Remove Taxonomies', 'mixes-plugin' ),
+            'choose_from_most_used'      => __( 'Choose from the most used Taxonomies', 'mixes-plugin' ),
+            'not_found'                  => __( 'No Taxonomies Found', 'mixes-plugin' ),
+            'no_terms'                   => __( 'No Taxonomies', 'mixes-plugin' ),
+            'items_list_navigation'      => __( 'Taxonomies List Navigation', 'mixes-plugin' ),
+            'items_list'                 => __( 'Taxonomies List', 'mixes-plugin' )
         ];
 
         $options = [
-            'label'              => __( 'Taxonomies', 'controlled-chaos-plugin' ),
+            'label'              => __( 'Taxonomies', 'mixes-plugin' ),
             'labels'             => $labels,
             'public'             => true,
             'hierarchical'       => false,
@@ -106,9 +106,9 @@ final class Taxes_Register {
          * Register the taxonomy
          */
         register_taxonomy(
-            'ccp_taxonomy',
+            'mmp_taxonomy',
             [
-                'ccp_post_type' // Change to your post type name.
+                'mmp_post_type' // Change to your post type name.
             ],
             $options
         );
@@ -118,4 +118,4 @@ final class Taxes_Register {
 }
 
 // Run the class.
-$ccp_taxes = new Taxes_Register;
+$mmp_taxes = new Taxes_Register;

@@ -2,7 +2,7 @@
 /**
  * Register post types.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -11,7 +11,7 @@
  * @link       https://codex.wordpress.org/Function_Reference/register_post_type
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Mixes_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -59,51 +59,51 @@ final class Post_Types_Register {
          * Renaming:
          * Search case "Custom Post" and replace with your post type capitalized name.
          * Search case "custom post" and replace with your post type lowercase name.
-         * Search case "ccp_post_type" and replace with your post type database name.
+         * Search case "mmp_post_type" and replace with your post type database name.
          * Search case "custom-posts" and replace with your post type archive permalink slug.
          */
 
         $labels = [
-            'name'                  => __( 'Custom Posts', 'controlled-chaos-plugin' ),
-            'singular_name'         => __( 'Custom Post', 'controlled-chaos-plugin' ),
-            'menu_name'             => __( 'Custom Posts', 'controlled-chaos-plugin' ),
-            'all_items'             => __( 'All Custom Posts', 'controlled-chaos-plugin' ),
-            'add_new'               => __( 'Add New', 'controlled-chaos-plugin' ),
-            'add_new_item'          => __( 'Add New Custom Post', 'controlled-chaos-plugin' ),
-            'edit_item'             => __( 'Edit Custom Post', 'controlled-chaos-plugin' ),
-            'new_item'              => __( 'New Custom Post', 'controlled-chaos-plugin' ),
-            'view_item'             => __( 'View Custom Post', 'controlled-chaos-plugin' ),
-            'view_items'            => __( 'View Custom Posts', 'controlled-chaos-plugin' ),
-            'search_items'          => __( 'Search Custom Posts', 'controlled-chaos-plugin' ),
-            'not_found'             => __( 'No Custom Posts Found', 'controlled-chaos-plugin' ),
-            'not_found_in_trash'    => __( 'No Custom Posts Found in Trash', 'controlled-chaos-plugin' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos-plugin' ),
-            'featured_image'        => __( 'Featured image for this custom post', 'controlled-chaos-plugin' ),
-            'set_featured_image'    => __( 'Set featured image for this custom post', 'controlled-chaos-plugin' ),
-            'remove_featured_image' => __( 'Remove featured image for this custom post', 'controlled-chaos-plugin' ),
-            'use_featured_image'    => __( 'Use as featured image for this custom post', 'controlled-chaos-plugin' ),
-            'archives'              => __( 'Custom Post archives', 'controlled-chaos-plugin' ),
-            'insert_into_item'      => __( 'Insert into Custom Post', 'controlled-chaos-plugin' ),
-            'uploaded_to_this_item' => __( 'Uploaded to this Custom Post', 'controlled-chaos-plugin' ),
-            'filter_items_list'     => __( 'Filter Custom Posts', 'controlled-chaos-plugin' ),
-            'items_list_navigation' => __( 'Custom Posts list navigation', 'controlled-chaos-plugin' ),
-            'items_list'            => __( 'Custom Posts List', 'controlled-chaos-plugin' ),
-            'attributes'            => __( 'Custom Post Attributes', 'controlled-chaos-plugin' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'controlled-chaos-plugin' ),
+            'name'                  => __( 'Custom Posts', 'mixes-plugin' ),
+            'singular_name'         => __( 'Custom Post', 'mixes-plugin' ),
+            'menu_name'             => __( 'Custom Posts', 'mixes-plugin' ),
+            'all_items'             => __( 'All Custom Posts', 'mixes-plugin' ),
+            'add_new'               => __( 'Add New', 'mixes-plugin' ),
+            'add_new_item'          => __( 'Add New Custom Post', 'mixes-plugin' ),
+            'edit_item'             => __( 'Edit Custom Post', 'mixes-plugin' ),
+            'new_item'              => __( 'New Custom Post', 'mixes-plugin' ),
+            'view_item'             => __( 'View Custom Post', 'mixes-plugin' ),
+            'view_items'            => __( 'View Custom Posts', 'mixes-plugin' ),
+            'search_items'          => __( 'Search Custom Posts', 'mixes-plugin' ),
+            'not_found'             => __( 'No Custom Posts Found', 'mixes-plugin' ),
+            'not_found_in_trash'    => __( 'No Custom Posts Found in Trash', 'mixes-plugin' ),
+            'parent_item_colon'     => __( 'Parent Custom Post', 'mixes-plugin' ),
+            'featured_image'        => __( 'Featured image for this custom post', 'mixes-plugin' ),
+            'set_featured_image'    => __( 'Set featured image for this custom post', 'mixes-plugin' ),
+            'remove_featured_image' => __( 'Remove featured image for this custom post', 'mixes-plugin' ),
+            'use_featured_image'    => __( 'Use as featured image for this custom post', 'mixes-plugin' ),
+            'archives'              => __( 'Custom Post archives', 'mixes-plugin' ),
+            'insert_into_item'      => __( 'Insert into Custom Post', 'mixes-plugin' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this Custom Post', 'mixes-plugin' ),
+            'filter_items_list'     => __( 'Filter Custom Posts', 'mixes-plugin' ),
+            'items_list_navigation' => __( 'Custom Posts list navigation', 'mixes-plugin' ),
+            'items_list'            => __( 'Custom Posts List', 'mixes-plugin' ),
+            'attributes'            => __( 'Custom Post Attributes', 'mixes-plugin' ),
+            'parent_item_colon'     => __( 'Parent Custom Post', 'mixes-plugin' ),
         ];
 
         // Apply a filter to labels for customization.
-        $labels = apply_filters( 'ccp_post_type_labels', $labels );
+        $labels = apply_filters( 'mmp_post_type_labels', $labels );
 
         $options = [
-            'label'               => __( 'Custom Posts', 'controlled-chaos-plugin' ),
+            'label'               => __( 'Custom Posts', 'mixes-plugin' ),
             'labels'              => $labels,
-            'description'         => __( 'Custom post type description.', 'controlled-chaos-plugin' ),
+            'description'         => __( 'Custom post type description.', 'mixes-plugin' ),
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
             'show_in_rest'        => false,
-            'rest_base'           => 'ccp_post_type_rest_api',
+            'rest_base'           => 'mmp_post_type_rest_api',
             'has_archive'         => true,
             'show_in_menu'        => true,
             'exclude_from_search' => false,
@@ -114,7 +114,7 @@ final class Post_Types_Register {
                 'slug'       => 'custom-posts',
                 'with_front' => true
             ],
-            'query_var'           => 'ccp_post_type',
+            'query_var'           => 'mmp_post_type',
             'menu_position'       => 5,
             'menu_icon'           => 'dashicons-admin-post',
             'supports'            => [
@@ -133,12 +133,12 @@ final class Post_Types_Register {
             'taxonomies'          => [
                 'category',
                 'post_tag',
-                'ccp_taxonomy' // Change to your custom taxonomy name.
+                'mmp_taxonomy' // Change to your custom taxonomy name.
             ],
         ];
 
         // Apply a filter to arguments for customization.
-        $options = apply_filters( 'ccp_post_type_args', $options );
+        $options = apply_filters( 'mmp_post_type_args', $options );
 
         /**
          * Register the post type
@@ -146,7 +146,7 @@ final class Post_Types_Register {
          * Maximum 20 characters, cannot contain capital letters or spaces.
          */
         register_post_type(
-            'ccp_post_type',
+            'mmp_post_type',
             $options
         );
 
@@ -155,4 +155,4 @@ final class Post_Types_Register {
 }
 
 // Run the class.
-$ccp_post_types = new Post_Types_Register;
+$mmp_post_types = new Post_Types_Register;

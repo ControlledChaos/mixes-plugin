@@ -2,14 +2,14 @@
 /**
  * Welcome panel functionality.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Admin\Dashboard
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Dashboard;
+namespace Mixes_Plugin\Admin\Dashboard;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -65,12 +65,12 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( ccp_acf_options() ) {
-			$dismiss = get_field( 'ccp_remove_welcome_dismiss', 'option' );
+		if ( mmp_acf_options() ) {
+			$dismiss = get_field( 'mmp_remove_welcome_dismiss', 'option' );
 
 		// If ACF is not active, get the field from the WordPress/ClassicPress options page.
 		} else {
-			$dismiss = get_option( 'ccp_remove_welcome_dismiss' );
+			$dismiss = get_option( 'mmp_remove_welcome_dismiss' );
 		}
 
 		if ( $dismiss ) {
@@ -82,10 +82,10 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( ccp_acf_options() ) {
-			$welcome = get_field( 'ccp_custom_welcome', 'option' );
+		if ( mmp_acf_options() ) {
+			$welcome = get_field( 'mmp_custom_welcome', 'option' );
 		} else {
-			$welcome = get_option( 'ccp_custom_welcome' );
+			$welcome = get_option( 'mmp_custom_welcome' );
 		}
 
 		if ( $welcome ) {
@@ -136,9 +136,9 @@ class Welcome {
 	public function widget_areas() {
 
 		register_sidebar( [
-			'name'          => __( 'Welcome Panel - First Area', 'controlled-chaos-plugin' ),
-			'id'            => 'ccp_welcome_widget_first',
-			'description'   => __( '', 'controlled-chaos-plugin' ),
+			'name'          => __( 'Welcome Panel - First Area', 'mixes-plugin' ),
+			'id'            => 'mmp_welcome_widget_first',
+			'description'   => __( '', 'mixes-plugin' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3>',
@@ -146,9 +146,9 @@ class Welcome {
 		] );
 
 		register_sidebar( [
-			'name'          => __( 'Welcome Panel - Second Area', 'controlled-chaos-plugin' ),
-			'id'            => 'ccp_welcome_widget_second',
-			'description'   => __( '', 'controlled-chaos-plugin' ),
+			'name'          => __( 'Welcome Panel - Second Area', 'mixes-plugin' ),
+			'id'            => 'mmp_welcome_widget_second',
+			'description'   => __( '', 'mixes-plugin' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3>',
@@ -156,9 +156,9 @@ class Welcome {
 		] );
 
 		register_sidebar( [
-			'name'          => __( 'Welcome Panel - Third Area', 'controlled-chaos-plugin' ),
-			'id'            => 'ccp_welcome_widget_last',
-			'description'   => __( '', 'controlled-chaos-plugin' ),
+			'name'          => __( 'Welcome Panel - Third Area', 'mixes-plugin' ),
+			'id'            => 'mmp_welcome_widget_last',
+			'description'   => __( '', 'mixes-plugin' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3>',
@@ -181,7 +181,7 @@ class Welcome {
 		if ( ! empty( $welcome ) ) {
 			get_template_part( 'template-parts/admin/welcome-panel' );
 		} else {
-			include_once CCP_PATH . 'admin/dashboard/partials/welcome-panel.php';
+			include_once MMP_PATH . 'admin/dashboard/partials/welcome-panel.php';
 		}
 
 	}
@@ -200,7 +200,7 @@ class Welcome {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CCP_ADMIN_SLUG . '-welcome', CCP_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
+            wp_enqueue_style( MMP_ADMIN_SLUG . '-welcome', MMP_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
         }
 
 	}
@@ -214,11 +214,11 @@ class Welcome {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_welcome() {
+function mmp_welcome() {
 
 	return Welcome::instance();
 
 }
 
 // Run an instance of the class.
-ccp_welcome();
+mmp_welcome();

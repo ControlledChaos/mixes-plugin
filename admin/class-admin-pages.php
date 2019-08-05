@@ -2,14 +2,14 @@
 /**
  * New admin pages and admin screen modification.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Mixes_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -61,14 +61,14 @@ class Admin_Pages {
         add_action( 'admin_menu', [ $this, 'about_plugin' ] );
 
         // Add admin header.
-        if ( ccp_acf_options() ) {
+        if ( mmp_acf_options() ) {
 
             // If the ACF free plus the Options Page addon or Pro plugin is active.
-            $admin_header = get_field( 'ccp_use_admin_header', 'option' );
+            $admin_header = get_field( 'mmp_use_admin_header', 'option' );
         } else {
 
             // Otherwise look for the WP API setting.
-            $admin_header = get_option( 'ccp_use_admin_header' );
+            $admin_header = get_option( 'mmp_use_admin_header' );
         }
 
         // If admin header option s selected.
@@ -135,10 +135,10 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( ccp_acf_options() ) {
+        if ( mmp_acf_options() ) {
 
             // Get the field.
-            $acf_position = get_field( 'ccp_site_plugin_link_position', 'option' );
+            $acf_position = get_field( 'mmp_site_plugin_link_position', 'option' );
 
             // Return true if the field is set to `top`.
             if ( 'top' == $acf_position ) {
@@ -153,7 +153,7 @@ class Admin_Pages {
         } else {
 
             // Get the field.
-            $position = get_option( 'ccp_site_plugin_link_position' );
+            $position = get_option( 'mmp_site_plugin_link_position' );
         }
 
         /**
@@ -164,16 +164,16 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( ccp_acf_options() ) {
+        if ( mmp_acf_options() ) {
 
             // Get the field.
-            $link_label = get_field( 'ccp_site_plugin_link_label', 'option' );
+            $link_label = get_field( 'mmp_site_plugin_link_label', 'option' );
 
         // If ACF is not active, get the field from the WordPress/ClassicPress options page.
         } else {
 
             // Get the field.
-            $link_label = sanitize_text_field( get_option( 'ccp_site_plugin_link_label' ) );
+            $link_label = sanitize_text_field( get_option( 'mmp_site_plugin_link_label' ) );
         }
 
         // If one of the label fields above is not empty the use that label.
@@ -182,7 +182,7 @@ class Admin_Pages {
 
         // Otherwise use Site Plugin as the label.
         }  else {
-            $label = __( 'Site Plugin', 'controlled-chaos-plugin' );
+            $label = __( 'Site Plugin', 'mixes-plugin' );
         }
 
         /**
@@ -195,16 +195,16 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( ccp_acf_options() ) {
+        if ( mmp_acf_options() ) {
 
             // Get the field.
-            $link_icon  = get_field( 'ccp_site_plugin_link_icon', 'option' );
+            $link_icon  = get_field( 'mmp_site_plugin_link_icon', 'option' );
 
         // If ACF is not active, get the field from the WordPress/ClassicPress options page.
         } else {
 
             // Get the field.
-            $link_icon  = sanitize_text_field( get_option( 'ccp_site_plugin_link_icon' ) );
+            $link_icon  = sanitize_text_field( get_option( 'mmp_site_plugin_link_icon' ) );
         }
 
         // If one of the icon fields above is not empty the use that CSS class.
@@ -213,7 +213,7 @@ class Admin_Pages {
 
         // Otherwise use the scholar's cap icon to imply instruction.
         }  else {
-            $icon = __( 'dashicons-welcome-learn-more', 'controlled-chaos-plugin' );
+            $icon = __( 'dashicons-welcome-learn-more', 'mixes-plugin' );
         }
 
         if ( true == $position ) {
@@ -221,7 +221,7 @@ class Admin_Pages {
                 $label,
                 $label,
                 'manage_options',
-                CCP_ADMIN_SLUG . '-page',
+                MMP_ADMIN_SLUG . '-page',
                 [ $this, 'about_plugin_output' ],
                 $icon,
                 3
@@ -232,7 +232,7 @@ class Admin_Pages {
                 $label,
                 $label,
                 'manage_options',
-                CCP_ADMIN_SLUG . '-page',
+                MMP_ADMIN_SLUG . '-page',
                 [ $this, 'about_plugin_output' ]
             );
         }
@@ -251,7 +251,7 @@ class Admin_Pages {
      */
     public function about_plugin_output() {
 
-        require CCP_PATH . 'admin/partials/plugin-page-about.php';
+        require MMP_PATH . 'admin/partials/plugin-page-about.php';
 
     }
 
@@ -271,7 +271,7 @@ class Admin_Pages {
 		// More information tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_plugin_info',
-			'title'    => __( 'More Information', 'controlled-chaos-plugin' ),
+			'title'    => __( 'More Information', 'mixes-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_plugin_info' ]
 		] );
@@ -279,7 +279,7 @@ class Admin_Pages {
         // Convert plugin tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_convert_plugin',
-			'title'    => __( 'Convert Plugin', 'controlled-chaos-plugin' ),
+			'title'    => __( 'Convert Plugin', 'mixes-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_convert_plugin' ]
 		] );
@@ -298,7 +298,7 @@ class Admin_Pages {
      */
 	public function help_plugin_info() {
 
-		include_once CCP_PATH . 'admin/partials/help/help-plugin-info.php';
+		include_once MMP_PATH . 'admin/partials/help/help-plugin-info.php';
 
     }
 
@@ -309,7 +309,7 @@ class Admin_Pages {
      */
 	public function help_convert_plugin() {
 
-		include_once CCP_PATH . 'admin/partials/help/help-plugin-convert.php';
+		include_once MMP_PATH . 'admin/partials/help/help-plugin-convert.php';
 
     }
 
@@ -320,22 +320,22 @@ class Admin_Pages {
      */
     public function help_about_page_sidebar() {
 
-        $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', 'controlled-chaos-plugin' ) );
+        $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', 'mixes-plugin' ) );
         $html .= sprintf(
             '<p>%1s %2s.</p>',
-            __( 'This plugin was originally written by', 'controlled-chaos-plugin' ),
+            __( 'This plugin was originally written by', 'mixes-plugin' ),
             'Greg Sweet'
         );
         $html .= sprintf(
             '<p>%1s <br /><a href="%2s" target="_blank">%3s</a> <br />%4s</p>',
-            __( 'Visit:', 'controlled-chaos-plugin' ),
+            __( 'Visit:', 'mixes-plugin' ),
             'http://ccdzine.com/',
             'Controlled Chaos Design',
-            __( 'for more free downloads.', 'controlled-chaos-plugin' )
+            __( 'for more free downloads.', 'mixes-plugin' )
         );
         $html .= sprintf(
             '<p>%1s</p>',
-            __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', 'controlled-chaos-plugin' )
+            __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', 'mixes-plugin' )
          );
 
 		return $html;
@@ -352,7 +352,7 @@ class Admin_Pages {
 	public function admin_menus() {
 
 		register_nav_menus( [
-			'admin-header' => __( 'Admin Header Menu', 'controlled-chaos-plugin' )
+			'admin-header' => __( 'Admin Header Menu', 'mixes-plugin' )
 		] );
 
 	}
@@ -374,7 +374,7 @@ class Admin_Pages {
 		if ( ! empty( $admin_header ) ) {
 			get_template_part( 'template-parts/admin/admin-header' );
 		} else {
-			include_once CCP_PATH . 'admin/partials/admin-header.php';
+			include_once MMP_PATH . 'admin/partials/admin-header.php';
 		}
 
     }
@@ -422,14 +422,14 @@ class Admin_Pages {
         // $style .= '.edit-post-header { position: sticky }';
         // $style .= '.edit-post-layout { padding-top: 0; }';
         // $style .= '.edit-post-sidebar { top: 32px; }';
-        $style .= '.gutenberg-editor-page .ccp-admin-header { padding-left: 20px; }';
-        $style .= '.gutenberg-editor-page .ccp-admin-header:before { content: ""; display: block; width: 100%; height: 56px; }';
+        $style .= '.gutenberg-editor-page .mmp-admin-header { padding-left: 20px; }';
+        $style .= '.gutenberg-editor-page .mmp-admin-header:before { content: ""; display: block; width: 100%; height: 56px; }';
 
         // End the style block.
         $style .= '</style>';
 
         // Apply a filter for custom admin themeing.
-        $style = apply_filters( 'ccp_admin_header_layout', $style );
+        $style = apply_filters( 'mmp_admin_header_layout', $style );
 
         // Render all styles.
         echo $style;
@@ -456,11 +456,11 @@ class Admin_Pages {
 
         // Post type: post.
         if ( 'post' == $screen->post_type ) {
-            $post_title = esc_html__( 'Post Title', 'controlled-chaos-plugin' );
+            $post_title = esc_html__( 'Post Title', 'mixes-plugin' );
 
         // Post type: page.
         } elseif ( 'page' == $screen->post_type ) {
-            $post_title = esc_html__( 'Page Title', 'controlled-chaos-plugin' );
+            $post_title = esc_html__( 'Page Title', 'mixes-plugin' );
 
         // Post type: attachment.
         } elseif ( $screen->post_type == 'attachment' ) {
@@ -468,11 +468,11 @@ class Admin_Pages {
 
         // Post type: custom, unidentified.
         } else {
-            $post_title = esc_html__( 'Enter Title', 'controlled-chaos-plugin' );
+            $post_title = esc_html__( 'Enter Title', 'mixes-plugin' );
         }
 
         // Apply a filter conditional modification.
-        $title = apply_filters( 'ccp_post_title_placeholders', $post_title );
+        $title = apply_filters( 'mmp_post_title_placeholders', $post_title );
 
         // Return the new placeholder.
         return $title;
@@ -581,7 +581,7 @@ class Admin_Pages {
         $size  = 'Column Thumbnail';
 
         // Apply a filter for conditional modification.
-        $thumb = apply_filters( 'ccp_column_thumbnail_size', $size );
+        $thumb = apply_filters( 'mmp_column_thumbnail_size', $size );
 
         // If there is an ID (if the post has a featured image).
         if ( $post_thumbnail_id ) {
@@ -607,10 +607,10 @@ class Admin_Pages {
     public function image_column_head( $defaults ) {
 
         // The column heading name.
-        $name    = __( 'Featured Image', 'controlled-chaos-plugin' );
+        $name    = __( 'Featured Image', 'mixes-plugin' );
 
         // Apply a filter for conditional modification.
-        $heading = apply_filters( 'ccp_image_column_head', $name );
+        $heading = apply_filters( 'mmp_image_column_head', $name );
 
         // The column heading name to new `featured_image` column.
         $defaults['featured_image'] = esc_html__( $heading );
@@ -667,11 +667,11 @@ class Admin_Pages {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_admin_pages() {
+function mmp_admin_pages() {
 
 	return Admin_Pages::instance();
 
 }
 
 // Run an instance of the class.
-ccp_admin_pages();
+mmp_admin_pages();

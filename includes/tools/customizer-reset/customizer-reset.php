@@ -2,7 +2,7 @@
 /**
  * Customizer reset tool
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Tools\Customizer_Reset
  *
  * @since      1.0.0
@@ -12,7 +12,7 @@
  * @link       https://github.com/wpzoom/customizer-reset
  */
 
-namespace CC_Plugin\Includes\Tools\Customizer_Reset;
+namespace Mixes_Plugin\Includes\Tools\Customizer_Reset;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -74,11 +74,11 @@ final class Customizer_Reset {
 	 */
 	public function customize_controls_print_scripts() {
 
-		wp_enqueue_script( 'ccp-customizer-reset', CCP_URL . 'includes/tools/customizer-reset/assets/js/customizer-reset.js', [ 'jquery' ], '20150120' );
+		wp_enqueue_script( 'mmp-customizer-reset', MMP_URL . 'includes/tools/customizer-reset/assets/js/customizer-reset.js', [ 'jquery' ], '20150120' );
 
-		wp_localize_script( 'ccp-customizer-reset', '_CCPCustomizerReset', [
-			'reset'   => __( 'Reset', 'controlled-chaos-plugin' ),
-			'confirm' => __( 'Warning! This will remove all changes made to this theme via the Customizer. This action is irreversible.', 'controlled-chaos-plugin' ),
+		wp_localize_script( 'mmp-customizer-reset', '_MMPCustomizerReset', [
+			'reset'   => __( 'Reset', 'mixes-plugin' ),
+			'confirm' => __( 'Warning! This will remove all changes made to this theme via the Customizer. This action is irreversible.', 'mixes-plugin' ),
 			'nonce'   => [
 				'reset' => wp_create_nonce( 'customizer-reset' ),
 			]
@@ -152,11 +152,11 @@ final class Customizer_Reset {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_customizer_reset() {
+function mmp_customizer_reset() {
 
 	return Customizer_Reset::instance();
 
 }
 
 // Run an instance of the class.
-ccp_customizer_reset();
+mmp_customizer_reset();

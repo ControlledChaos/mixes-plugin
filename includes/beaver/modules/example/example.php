@@ -2,7 +2,7 @@
 /**
  * Example Beaver Builder module
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\Beaver
  *
  * @since      1.0.0
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class CCP_Example_Module extends FLBuilderModule {
+class MMP_Example_Module extends FLBuilderModule {
 
     /**
 	 * Constructor method
@@ -32,11 +32,11 @@ class CCP_Example_Module extends FLBuilderModule {
     public function __construct() {
 
         parent::__construct( [
-            'name'          => __( 'Example', 'controlled-chaos-plugin' ),
-            'description'   => __( 'An example for coding new modules.', 'controlled-chaos-plugin' ),
-            'category'      => __( 'Example Modules', 'controlled-chaos-plugin' ),
-            'dir'           => CCP_PATH . 'includes/beaver/modules/example/',
-            'url'           => CCP_URL . 'includes/beaver/modules/example/',
+            'name'          => __( 'Example', 'mixes-plugin' ),
+            'description'   => __( 'An example for coding new modules.', 'mixes-plugin' ),
+            'category'      => __( 'Example Modules', 'mixes-plugin' ),
+            'dir'           => MMP_PATH . 'includes/beaver/modules/example/',
+            'url'           => MMP_URL . 'includes/beaver/modules/example/',
             'editor_export' => true, // Defaults to true and can be omitted.
             'enabled'       => true, // Defaults to true and can be omitted.
         ] );
@@ -69,7 +69,7 @@ class CCP_Example_Module extends FLBuilderModule {
      */
     public function update( $settings ) {
 
-        $settings->textarea_field .= __( ' - this text was appended in the update method.', 'controlled-chaos-plugin' );
+        $settings->textarea_field .= __( ' - this text was appended in the update method.', 'mixes-plugin' );
 
         return $settings;
 
@@ -109,23 +109,23 @@ class CCP_Example_Module extends FLBuilderModule {
  * @access public
  * @return array Returns the array of module fields.
  */
-FLBuilder::register_module( 'CCP_Example_Module', [
+FLBuilder::register_module( 'MMP_Example_Module', [
     'general' => [ // Tab
-        'title'    => __( 'General', 'controlled-chaos-plugin' ), // Tab title
+        'title'    => __( 'General', 'mixes-plugin' ), // Tab title
         'sections' => [ // Tab Sections
             'general' => [ // Section
-                'title'  => __( 'Section Title', 'controlled-chaos-plugin' ), // Section Title
+                'title'  => __( 'Section Title', 'mixes-plugin' ), // Section Title
                 'fields' => [ // Section Fields
                     'text_field' => [
                         'type'        => 'text',
-                        'label'       => __( 'Text Field', 'controlled-chaos-plugin' ),
+                        'label'       => __( 'Text Field', 'mixes-plugin' ),
                         'default'     => '',
                         'maxlength'   => '2',
                         'size'        => '3',
                         'placeholder' => '10',
                         'class'       => 'my-css-class',
                         'description' => 'px',
-                        'help'        =>__( 'Put your help inf here.', 'controlled-chaos-plugin' ),
+                        'help'        =>__( 'Put your help inf here.', 'mixes-plugin' ),
                         'preview'     => [
                             'type'     => 'css',
                             'selector' => '.fl-example-text',
@@ -135,9 +135,9 @@ FLBuilder::register_module( 'CCP_Example_Module', [
                     ],
                     'textarea_field' => [
                         'type'        => 'textarea',
-                        'label'       => __( 'Textarea Field', 'controlled-chaos-plugin' ),
+                        'label'       => __( 'Textarea Field', 'mixes-plugin' ),
                         'default'     => '',
-                        'placeholder' => __( 'Placeholder Text', 'controlled-chaos-plugin' ),
+                        'placeholder' => __( 'Placeholder Text', 'mixes-plugin' ),
                         'rows'        => '6',
                         'preview'     => [
                             'type'     => 'text',
@@ -146,17 +146,17 @@ FLBuilder::register_module( 'CCP_Example_Module', [
                     ],
                     'select_field' => [
                         'type'    => 'select',
-                        'label'   => __( 'Select Field', 'controlled-chaos-plugin' ),
+                        'label'   => __( 'Select Field', 'mixes-plugin' ),
                         'default' => 'option-2',
                         'options' => [
-                            'option-1' => __( 'Option 1', 'controlled-chaos-plugin' ),
-                            'option-2' => __( 'Option 2', 'controlled-chaos-plugin' ),
-                            'option-3' => __( 'Option 3', 'controlled-chaos-plugin' )
+                            'option-1' => __( 'Option 1', 'mixes-plugin' ),
+                            'option-2' => __( 'Option 2', 'mixes-plugin' ),
+                            'option-3' => __( 'Option 3', 'mixes-plugin' )
                         ]
                     ],
                     'color_field' => [
                         'type'       => 'color',
-                        'label'      => __( 'Color Picker', 'controlled-chaos-plugin' ),
+                        'label'      => __( 'Color Picker', 'mixes-plugin' ),
                         'default'    => '333333',
                         'show_reset' => true,
                         'preview'     => [
@@ -167,34 +167,34 @@ FLBuilder::register_module( 'CCP_Example_Module', [
                     ],
                     'photo_field' => [
                         'type'  => 'photo',
-                        'label' => __( 'Photo Field', 'controlled-chaos-plugin' )
+                        'label' => __( 'Photo Field', 'mixes-plugin' )
                     ],
                     'photos_field' => [
                         'type'  => 'multiple-photos',
-                        'label' => __( 'Multiple Photos Field', 'controlled-chaos-plugin' )
+                        'label' => __( 'Multiple Photos Field', 'mixes-plugin' )
                     ],
                     'video_field' => [
                         'type'  => 'video',
-                        'label' => __( 'Video Field', 'controlled-chaos-plugin' )
+                        'label' => __( 'Video Field', 'mixes-plugin' )
                     ],
                     'icon_field' => [
                         'type'        => 'icon',
-                        'label'       => __( 'Icon Field', 'controlled-chaos-plugin' ),
+                        'label'       => __( 'Icon Field', 'mixes-plugin' ),
                         'show_remove' => true
                     ],
                     'link_field' => [
                         'type'  => 'link',
-                        'label' => __( 'Link Field', 'controlled-chaos-plugin' )
+                        'label' => __( 'Link Field', 'mixes-plugin' )
                     ],
                     'form_field' => [
                         'type'         => 'form',
-                        'label'        => __( 'Form Field', 'controlled-chaos-plugin' ),
+                        'label'        => __( 'Form Field', 'mixes-plugin' ),
                         'form'         => 'example_settings_form', // ID from registered form below
                         'preview_text' => 'example' // Name of a field to use for the preview text
                     ],
                     'suggest_field' => [
                         'type'   => 'suggest',
-                        'label'  => __( 'Suggest Field', 'controlled-chaos-plugin' ),
+                        'label'  => __( 'Suggest Field', 'mixes-plugin' ),
                         'action' => 'fl_as_posts',
                         'data'   => 'post'
                     ],
@@ -205,8 +205,8 @@ FLBuilder::register_module( 'CCP_Example_Module', [
                         'rows'          => 10
                     ],
                     'custom_field_example' => [
-                        'type'    => 'ccp-custom-beaver-field',
-                        'label'   => __( 'Custom Field Example', 'controlled-chaos-plugin' ),
+                        'type'    => 'mmp-custom-beaver-field',
+                        'label'   => __( 'Custom Field Example', 'mixes-plugin' ),
                         'default' => ''
                     ],
                 ]
@@ -214,18 +214,18 @@ FLBuilder::register_module( 'CCP_Example_Module', [
         ]
     ],
     'toggle' => [ // Tab
-        'title'    => __( 'Toggle', 'controlled-chaos-plugin' ), // Tab title
+        'title'    => __( 'Toggle', 'mixes-plugin' ), // Tab title
         'sections' => [ // Tab Sections
             'general' => [ // Section
-                'title'  => __( 'Toggle Example', 'controlled-chaos-plugin' ), // Section Title
+                'title'  => __( 'Toggle Example', 'mixes-plugin' ), // Section Title
                 'fields' => [ // Section Fields
                     'toggle_me' => [
                         'type'    => 'select',
-                        'label'   => __( 'Toggle Me!', 'controlled-chaos-plugin' ),
+                        'label'   => __( 'Toggle Me!', 'mixes-plugin' ),
                         'default' => 'option-1',
                         'options' => [
-                            'option-1' => __( 'Option 1', 'controlled-chaos-plugin' ),
-                            'option-2' => __( 'Option 2', 'controlled-chaos-plugin' )
+                            'option-1' => __( 'Option 1', 'mixes-plugin' ),
+                            'option-2' => __( 'Option 2', 'mixes-plugin' )
                         ],
                         'toggle' => [
                             'option-1' => [
@@ -242,23 +242,23 @@ FLBuilder::register_module( 'CCP_Example_Module', [
                     ],
                     'toggle_text' => [
                         'type'        => 'text',
-                        'label'       => __( 'Hide Me!', 'controlled-chaos-plugin' ),
+                        'label'       => __( 'Hide Me!', 'mixes-plugin' ),
                         'default'     => '',
                         'description' => 'I get hidden when you toggle the select above.'
                     ],
                     'toggle_text2' => [
                         'type'    => 'text',
-                        'label'   => __( 'Me Too!', 'controlled-chaos-plugin' ),
+                        'label'   => __( 'Me Too!', 'mixes-plugin' ),
                         'default' => ''
                     ]
                 ]
             ],
             'toggle_section' => [ // Section
-                'title'  => __( 'Hide This Section!', 'controlled-chaos-plugin' ), // Section Title
+                'title'  => __( 'Hide This Section!', 'mixes-plugin' ), // Section Title
                 'fields' => [ // Section Fields
                     'some_text' => [
                         'type'    => 'text',
-                        'label'   => __( 'Text', 'controlled-chaos-plugin' ),
+                        'label'   => __( 'Text', 'mixes-plugin' ),
                         'default' => ''
                     ]
                 ]
@@ -266,14 +266,14 @@ FLBuilder::register_module( 'CCP_Example_Module', [
         ]
     ],
     'multiple' => [ // Tab
-        'title'    => __( 'Multiple', 'controlled-chaos-plugin' ), // Tab title
+        'title'    => __( 'Multiple', 'mixes-plugin' ), // Tab title
         'sections' => [ // Tab Sections
             'general' => [ // Section
-                'title'   => __( 'Multiple Example', 'controlled-chaos-plugin' ), // Section Title
+                'title'   => __( 'Multiple Example', 'mixes-plugin' ), // Section Title
                 'fields'  => [ // Section Fields
                     'test' => [
                         'type'     => 'text',
-                        'label'    => __( 'Multiple Test', 'controlled-chaos-plugin' ),
+                        'label'    => __( 'Multiple Test', 'mixes-plugin' ),
                         'multiple' => true // Doesn't work with editor or photo fields
                     ]
                 ]
@@ -281,8 +281,8 @@ FLBuilder::register_module( 'CCP_Example_Module', [
         ]
     ],
     'include' => [ // Tab
-        'title' => __( 'Include', 'controlled-chaos-plugin' ), // Tab title
-        'file'  => CCP_PATH . 'includes/beaver/example/includes/settings-example.php'
+        'title' => __( 'Include', 'mixes-plugin' ), // Tab title
+        'file'  => MMP_PATH . 'includes/beaver/example/includes/settings-example.php'
     ]
 ] );
 
@@ -290,32 +290,32 @@ FLBuilder::register_module( 'CCP_Example_Module', [
  * Register a settings form to use in the "form" field type above.
  */
 FLBuilder::register_settings_form( 'example_settings_form', [
-    'title' => __( 'Example Form Settings', 'controlled-chaos-plugin' ),
+    'title' => __( 'Example Form Settings', 'mixes-plugin' ),
     'tabs'  => [
         'general' => [ // Tab
-            'title'    => __( 'General', 'controlled-chaos-plugin' ), // Tab title
+            'title'    => __( 'General', 'mixes-plugin' ), // Tab title
             'sections' => [ // Tab Sections
                 'general' => [ // Section
                     'title'  => '', // Section Title
                     'fields' => [ // Section Fields
                         'example' => [
                             'type'    => 'text',
-                            'label'   => __( 'Example', 'controlled-chaos-plugin' ),
-                            'default' => __( 'Some example text', 'controlled-chaos-plugin' )
+                            'label'   => __( 'Example', 'mixes-plugin' ),
+                            'default' => __( 'Some example text', 'mixes-plugin' )
                         ]
                     ]
                 ]
             ]
         ],
         'another' => [ // Tab
-            'title'    => __( 'Another Tab', 'controlled-chaos-plugin' ), // Tab title
+            'title'    => __( 'Another Tab', 'mixes-plugin' ), // Tab title
             'sections' => [ // Tab Sections
                 'general' => [ // Section
                     'title'  => '', // Section Title
                     'fields' => [ // Section Fields
                         'another_example' => [
                             'type'  => 'text',
-                            'label' => __( 'Another Example', 'controlled-chaos-plugin' )
+                            'label' => __( 'Another Example', 'mixes-plugin' )
                         ]
                     ]
                 ]

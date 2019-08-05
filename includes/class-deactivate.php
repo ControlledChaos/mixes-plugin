@@ -7,7 +7,7 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes
  */
 
@@ -79,7 +79,7 @@ class Controlled_Chaos_Deactivate {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_deactivate() {
+function mmp_deactivate() {
 
 	return Controlled_Chaos_Deactivate::instance();
 

@@ -2,14 +2,14 @@
 /**
  * Dashboard functionality.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Admin\Dashboard
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Dashboard;
+namespace Mixes_Plugin\Admin\Dashboard;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -87,10 +87,10 @@ class Dashboard {
 	private function dependencies() {
 
         // Get the dashboard widget class.
-        require CCP_PATH . 'admin/dashboard/class-dashboard-widget.php';
+        require MMP_PATH . 'admin/dashboard/class-dashboard-widget.php';
 
         // Get the welcome panel class.
-        require CCP_PATH . 'admin/dashboard/class-welcome.php';
+        require MMP_PATH . 'admin/dashboard/class-welcome.php';
 
     }
 
@@ -171,10 +171,10 @@ class Dashboard {
         global $wp_meta_boxes;
 
         // If Advanced Custom Fields Pro is active.
-        if ( ccp_acf_options() ) {
+        if ( mmp_acf_options() ) {
 
             // Get the multiple checkbox field.
-            $hide = get_field( 'ccp_dashboard_hide_widgets', 'option' );
+            $hide = get_field( 'mmp_dashboard_hide_widgets', 'option' );
 
             // Hide the Welcome panel.
             if ( $hide && in_array( 'welcome', $hide ) ) {
@@ -182,7 +182,7 @@ class Dashboard {
             }
 
             // Hide the try Gutenberg panel.
-            $editor = get_field( 'ccp_classic_editor', 'option' );
+            $editor = get_field( 'mmp_classic_editor', 'option' );
             if ( ( $hide && in_array( 'gutenberg', $hide ) ) || $editor ) {
                 remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
             }
@@ -215,13 +215,13 @@ class Dashboard {
              */
 
             // Get options.
-            $welcome    = get_option( 'ccp_hide_welcome' );
-            $gutenberg  = get_option( 'ccp_hide_try_gutenberg' );
-            $editor     = get_option( 'ccp_classic_editor' );
-            $wp_news    = get_option( 'ccp_hide_wp_news' );
-            $quickpress = get_option( 'ccp_hide_quickpress' );
-            $at_glance  = get_option( 'ccp_hide_at_glance' );
-            $activity   = get_option( 'ccp_hide_activity' );
+            $welcome    = get_option( 'mmp_hide_welcome' );
+            $gutenberg  = get_option( 'mmp_hide_try_gutenberg' );
+            $editor     = get_option( 'mmp_classic_editor' );
+            $wp_news    = get_option( 'mmp_hide_wp_news' );
+            $quickpress = get_option( 'mmp_hide_quickpress' );
+            $at_glance  = get_option( 'mmp_hide_at_glance' );
+            $activity   = get_option( 'mmp_hide_activity' );
 
             // Hide the Welcome panel.
             if ( $welcome ) {
@@ -310,7 +310,7 @@ class Dashboard {
         // Dashboard widget tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_welcome_panel',
-			'title'    => __( 'Welcome Panel', 'controlled-chaos-plugin' ),
+			'title'    => __( 'Welcome Panel', 'mixes-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_welcome_panel' ]
         ] );
@@ -318,7 +318,7 @@ class Dashboard {
         // Dashboard widget tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_dashboard_widgets',
-			'title'    => __( 'Dashboard Widgets', 'controlled-chaos-plugin' ),
+			'title'    => __( 'Dashboard Widgets', 'mixes-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_dashboard_widgets' ]
 		] );
@@ -337,7 +337,7 @@ class Dashboard {
      */
 	public function help_welcome_panel() {
 
-        include_once CCP_PATH . 'admin/dashboard/partials/help/help-welcome-panel.php';
+        include_once MMP_PATH . 'admin/dashboard/partials/help/help-welcome-panel.php';
 
     }
 
@@ -348,7 +348,7 @@ class Dashboard {
      */
 	public function help_dashboard_widgets() {
 
-        include_once CCP_PATH . 'admin/dashboard/partials/help/help-dashboard-widgets.php';
+        include_once MMP_PATH . 'admin/dashboard/partials/help/help-dashboard-widgets.php';
 
     }
 
@@ -364,7 +364,7 @@ class Dashboard {
 
         $html  = sprintf(
             '<h4>%1s %2s</h4>',
-            __( 'Custom Dashboard for', 'controlled-chaos-plugin' ),
+            __( 'Custom Dashboard for', 'mixes-plugin' ),
              get_bloginfo( 'name' )
         );
 
@@ -373,7 +373,7 @@ class Dashboard {
         $html .= sprintf(
             '<p>%1s <a href="%2s">%3s</a></p>',
             __( 'Customize your' ),
-            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . CCP_ADMIN_SLUG . '-settings' ),
+            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . MMP_ADMIN_SLUG . '-settings' ),
             __( 'Dashboard Settings' )
         );
 
@@ -395,7 +395,7 @@ class Dashboard {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CCP_ADMIN_SLUG . '-dashboard', CCP_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
+            wp_enqueue_style( MMP_ADMIN_SLUG . '-dashboard', MMP_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
         }
 
 	}
@@ -409,11 +409,11 @@ class Dashboard {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_dashboard() {
+function mmp_dashboard() {
 
 	return Dashboard::instance();
 
 }
 
 // Run an instance of the class.
-ccp_dashboard();
+mmp_dashboard();

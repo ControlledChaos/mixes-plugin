@@ -2,7 +2,7 @@
 /**
  * Provided to extend Advanced Custom Fields.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Monica_Mixes_Plugin
  * @subpackage Includes\ACF
  *
  * @since      1.0.0
@@ -76,7 +76,7 @@ class Extend_ACF {
 	 */
 	public function admin_styles() {
 
-		wp_enqueue_style( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/css/admin.min.css', [], CCP_VERSION, 'screen' );
+		wp_enqueue_style( MMP_ADMIN_SLUG . '-acf-admin', MMP_URL . 'includes/acf/assets/css/admin.min.css', [], MMP_VERSION, 'screen' );
 
 	}
 
@@ -89,7 +89,7 @@ class Extend_ACF {
 	 */
 	public function admin_scripts() {
 
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( MMP_ADMIN_SLUG . '-acf-admin', MMP_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], MMP_VERSION, true );
 
 	}
 
@@ -102,11 +102,11 @@ class Extend_ACF {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_extend_acf() {
+function mmp_extend_acf() {
 
 	return Extend_ACF::instance();
 
 }
 
 // Run an instance of the class.
-ccp_extend_acf();
+mmp_extend_acf();
