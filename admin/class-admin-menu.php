@@ -113,6 +113,9 @@ class Admin_Menu {
      */
     public function hide() {
 
+		// Remove the Site Health page.
+		remove_submenu_page( 'tools.php', 'site-health.php' );
+
         /**
          * If Advanced Custom Fields is active.
          */

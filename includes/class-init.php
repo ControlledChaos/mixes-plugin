@@ -63,6 +63,12 @@ final class Init {
 	 */
 	private function __construct() {
 
+		// Stop site health checks.
+		add_filter( 'site_status_tests', [ $this, 'remove_tests' ] );
+
+		// Site Health page redirect.
+		add_action( 'current_screen', [ $this, 'health_redirect' ] );
+
 		// Remove the Draconian capital P filter.
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
@@ -94,28 +100,41 @@ final class Init {
 		// Various media and media library functionality.
 		require_once MMP_PATH . 'includes/media/class-media.php';
 
-		/**
-		 * Register custom editor blocks.
-		 *
-		 * @todo Remove conditional statement when Gutenberg is in core?
-		 */
-		if ( mmp_acf_pro() ) {
-			$editor = get_field( 'mmp_classic_editor', 'option' );
-		} else {
-			$editor = get_option( 'mmp_classic_editor' );
-		}
-		if ( ( mmp_classicpress() || mmp_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-			require_once MMP_PATH . 'includes/editor-blocks/class-register-block-types.php';
-		}
-
 		// Post types and taxonomies.
 		require_once MMP_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
-		// User funtionality.
-		require_once MMP_PATH . 'includes/users/class-users.php';
+	}
 
-		// Dev and maintenance tools.
-		require_once MMP_PATH . 'includes/tools/class-tools.php';
+	/**
+	 * Stop site health checks
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array Returns an array of allowed tests.
+	 */
+	public function remove_tests( $tests ) {
+
+		unset( $tests['direct']['php_version'] );
+		return $tests;
+
+	}
+
+	/**
+	 * Site Health page redirect
+	 */
+	public function health_redirect() {
+
+		if ( is_admin() ) {
+
+			$screen = get_current_screen();
+
+			// If screen ID is site health.
+			if ( 'site-health' == $screen->id ) {
+				wp_redirect( admin_url() );
+				exit;
+			}
+
+		}
 
 	}
 
@@ -126,24 +145,7 @@ final class Init {
 	 * @access public
 	 * @return void
 	 */
-	public function plugin_support() {
-
-		// Add Advanced Custom Fields Support.
-		if ( mmp_acf() ) {
-			include_once MMP_PATH . 'includes/acf/class-extend-acf.php';
-		}
-
-		// Add Beaver Builder support.
-		if ( class_exists( 'FLBuilder' ) ) {
-			include_once MMP_PATH . 'includes/beaver/class-beaver-builder.php';
-		}
-
-		// Add Elementor support.
-		if ( class_exists( '\Elementor\Plugin' ) ) {
-			include_once MMP_PATH . 'includes/elementor/class-elementor.php';
-		}
-
-	}
+	public function plugin_support() {}
 
 }
 

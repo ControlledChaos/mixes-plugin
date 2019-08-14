@@ -92,18 +92,6 @@ class Settings_Fields_Media {
         );
 
         /**
-         * SVG options.
-         */
-        add_settings_section( 'mmp-svg-settings', __( 'SVG Images', 'mixes-plugin' ), [ $this, 'svg_notice' ], 'media' );
-
-        add_settings_field( 'mmp_add_svg_support', __( 'SVG Support', 'mixes-plugin' ), [ $this, 'svg_support' ], 'media', 'mmp-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', 'mixes-plugin' ) ] );
-
-        register_setting(
-            'media',
-            'mmp_add_svg_support'
-        );
-
-        /**
          * Fancybox settings.
          */
         add_settings_section( 'mmp-media-settings', __( 'Fancybox', 'mixes-plugin' ), [ $this, 'fancybox_description' ], 'media' );
@@ -182,40 +170,6 @@ class Settings_Fields_Media {
         } else {
             update_option( 'large_crop', 0 );
         }
-
-    }
-
-    /**
-     * Add warning about using SVG images.
-     *
-     * @since  1.0.0
-	 * @access public
-	 * @return string
-     */
-    public function svg_notice() {
-
-        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', 'mixes-plugin' ) );
-
-        echo $html;
-
-    }
-
-    /**
-     * SVG options.
-     *
-     * @since  1.0.0
-	 * @access public
-	 * @return string
-     *
-     * @since    1.0.0
-     */
-    public function svg_support( $args ) {
-
-        $html = '<p><input type="checkbox" id="mmp_add_svg_support" name="mmp_add_svg_support" value="1" ' . checked( 1, get_option( 'mmp_add_svg_support' ), false ) . '/>';
-
-        $html .= '<label for="mmp_add_svg_support"> '  . $args[0] . '</label></p>';
-
-        echo $html;
 
     }
 

@@ -87,9 +87,6 @@ class Media {
 	 */
 	private function dependencies() {
 
-		// Add SVG media upload support.
-		include_once MMP_PATH . 'includes/media/class-svg-support.php';
-
 		// Replace WP gallery shortcode if Fancybox option is used.
 		$fancybox = get_option( 'mmp_enqueue_fancybox_script' );
 

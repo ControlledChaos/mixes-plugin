@@ -68,7 +68,20 @@ class Controlled_Chaos_Activate {
 	 * @access public
 	 * @return void
 	 */
-	public function activate() {}
+	public function activate() {
+
+		// Update image sizes.
+		set_post_thumbnail_size( 1280, 720, true );
+		update_option( 'thumbnail_size_w', 180 );
+		update_option( 'thumbnail_size_h', 180 );
+		update_option( 'thumbnail_crop', 1 ); // Hard crop.
+		update_option( 'medium_size_w', 320 );
+		update_option( 'medium_size_h', 240 );
+		update_option( 'medium_crop', 1 );
+		update_option( 'large_size_w', 960 );
+		update_option( 'large_size_h', 720 );
+		update_option( 'large_crop', 1 );
+	}
 
 }
 

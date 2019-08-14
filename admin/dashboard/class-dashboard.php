@@ -168,7 +168,16 @@ class Dashboard {
      */
     public function metaboxes() {
 
-        global $wp_meta_boxes;
+		global $wp_meta_boxes;
+
+		// Hide the WordPress News widget.
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
+
+		// Hide the ClassicPress Petitions widget.
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_petitions'] );
+
+		// Hide Quick Draft (QuickPress) widget.
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
 
         // If Advanced Custom Fields Pro is active.
         if ( mmp_acf_options() ) {
@@ -179,22 +188,6 @@ class Dashboard {
             // Hide the Welcome panel.
             if ( $hide && in_array( 'welcome', $hide ) ) {
                 remove_action( 'welcome_panel', 'wp_welcome_panel' );
-            }
-
-            // Hide the try Gutenberg panel.
-            $editor = get_field( 'mmp_classic_editor', 'option' );
-            if ( ( $hide && in_array( 'gutenberg', $hide ) ) || $editor ) {
-                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
-            }
-
-            // Hide the WordPress News widget.
-            if ( $hide && in_array( 'news', $hide ) ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-            }
-
-            // Hide Quick Draft (QuickPress) widget.
-            if ( $hide && in_array( 'quick', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
             }
 
             // Hide At a Glance widget.
@@ -216,32 +209,13 @@ class Dashboard {
 
             // Get options.
             $welcome    = get_option( 'mmp_hide_welcome' );
-            $gutenberg  = get_option( 'mmp_hide_try_gutenberg' );
-            $editor     = get_option( 'mmp_classic_editor' );
-            $wp_news    = get_option( 'mmp_hide_wp_news' );
-            $quickpress = get_option( 'mmp_hide_quickpress' );
             $at_glance  = get_option( 'mmp_hide_at_glance' );
             $activity   = get_option( 'mmp_hide_activity' );
 
             // Hide the Welcome panel.
             if ( $welcome ) {
-                remove_action( 'welcome_panel', 'wp_welcome_panel' );
-            }
-
-            // Hide the try Gutenberg panel.
-            if ( $gutenberg || $editor ) {
-                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
-            }
-
-            // Hide the WordPress News widget.
-            if ( $wp_news ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-            }
-
-            // Hide Quick Draft (QuickPress) widget.
-            if ( $quickpress ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
-            }
+				remove_action( 'welcome_panel', 'wp_welcome_panel' );
+			}
 
             // Hide At a Glance widget.
             if ( $at_glance ) {

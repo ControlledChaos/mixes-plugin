@@ -76,6 +76,166 @@ final class Settings_Fields_ACF {
 				'fields' => [
 
 					/**
+					 * Meta/SEO tab settings.
+					 *
+					 * @since 1.0.0
+					 */
+
+					[
+						'key'               => 'field_5a1989a036067',
+						'label'             => __( 'Meta/SEO', 'mixes-plugin' ),
+						'name'              => '',
+						'type'              => 'tab',
+						'instructions'      => __( '', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'placement'         => 'top',
+						'endpoint'          => 0,
+					],
+					[
+						'key'               => 'field_5a237090744c4',
+						'label'             => __( 'Meta Tags', 'mixes-plugin' ),
+						'name'              => 'mmp_meta_disable_tags',
+						'type'              => 'true_false',
+						'instructions'      => __( 'Disable if you plan on using Yoast SEO or a similarly awful plugin.', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'message'           => __( 'Check to disable', 'mixes-plugin' ),
+						'default_value'     => 0,
+						'ui'                => 0,
+						'ui_on_text'        => __( 'Disabled', 'mixes-plugin' ),
+						'ui_off_text'       => __( 'Enabled', 'mixes-plugin' ),
+					],
+					[
+						'key'               => 'field_5a198d601b523',
+						'label'             => __( 'Blog Pages Title', 'mixes-plugin' ),
+						'name'              => 'mmp_meta_blog_title',
+						'type'              => 'text',
+						'instructions'      => __( 'Will use the site title if left empty.', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => [
+							[
+								[
+									'field'    => 'field_5a237090744c4',
+									'operator' => '!=',
+									'value'    => '1',
+								],
+							],
+						],
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'default_value'     => '',
+						'placeholder'       => '',
+						'prepend'           => '',
+						'append'            => '',
+						'maxlength'         => '',
+					],
+					[
+						'key'               => 'field_5a198bd736068',
+						'label'             => __( 'Blog Pages Description', 'mixes-plugin' ),
+						'name'              => 'mmp_meta_blog_description',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Will use the site tagline if left empty and if a tagline is set.', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => [
+							[
+								[
+									'field'    => 'field_5a237090744c4',
+									'operator' => '!=',
+									'value'    => '1',
+								],
+							],
+						],
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => 4,
+						'new_lines'         => '',
+					],
+					[
+						'key'               => 'field_5a198c1836069',
+						'label'             => __( 'Blog Pages Image', 'mixes-plugin' ),
+						'name'              => 'mmp_meta_blog_image',
+						'type'              => 'image',
+						'instructions'      => __( 'A minimum of 1230px by 600px is recommended for retina display devices.', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => [
+							[
+								[
+									'field'    => 'field_5a237090744c4',
+									'operator' => '!=',
+									'value'    => '1',
+								],
+							],
+						],
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'return_format'     => 'array',
+						'preview_size'      => 'medium',
+						'library'           => 'all',
+						'min_width'         => '',
+						'min_height'        => '',
+						'min_size'          => '',
+						'max_width'         => '',
+						'max_height'        => '',
+						'max_size'          => '',
+						'mime_types'        => '',
+					],
+					[
+						'key'               => 'field_5b2fd67604455',
+						'label'             => __( 'Default Meta Image', 'mixes-plugin' ),
+						'name'              => 'mmp_meta_default_image',
+						'type'              => 'image',
+						'instructions'      => __( 'Will be used as a fallback for posts without a featured image and used for archive pages. A minimum of 1230px by 600px is recommended for retina display devices.', 'mixes-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => [
+							[
+								[
+									'field'    => 'field_5a237090744c4',
+									'operator' => '!=',
+									'value'    => '1',
+								],
+							],
+						],
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'return_format'     => 'array',
+						'preview_size'      => 'medium',
+						'library'           => 'all',
+						'min_width'         => '',
+						'min_height'        => '',
+						'min_size'          => '',
+						'max_width'         => '',
+						'max_height'        => '',
+						'max_size'          => '',
+						'mime_types'        => '',
+					],
+
+					/**
 					 * Dashboard tab settings.
 					 *
 					 * @since 1.0.0
@@ -149,10 +309,7 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'choices'           => [
-							'gutenberg' => __( 'Try Gutenberg', 'mixes-plugin' ),
 							'welcome'   => __( 'Welcome', 'mixes-plugin' ),
-							'news'      => __( 'WordPress News', 'mixes-plugin' ),
-							'quick'     => __( 'Quick Press', 'mixes-plugin' ),
 							'at_glance' => __( 'At a Glance', 'mixes-plugin' ),
 							'activity'  => __( 'Activity', 'mixes-plugin' ),
 						],
@@ -377,25 +534,6 @@ final class Settings_Fields_ACF {
 						'toggle'            => 1,
 						'return_format'     => 'value',
 					],
-					[
-						'key'               => 'field_5aaa73e38deb3',
-						'label'             => __( 'Restore Links Manager', 'mixes-plugin' ),
-						'name'              => 'mmp_links_manager',
-						'type'              => 'true_false',
-						'instructions'      => __( 'The old Links Manager is hidden by default in newer WordPress installations.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => '',
-						'default_value'     => 0,
-						'ui'                => 1,
-						'ui_on_text'        => __( 'Enabled', 'mixes-plugin' ),
-						'ui_off_text'       => __( 'Disabled', 'mixes-plugin' ),
-					],
 
 					/**
 					 * Admin Pages tab settings.
@@ -418,25 +556,6 @@ final class Settings_Fields_ACF {
 						],
 						'placement'         => 'top',
 						'endpoint'          => 0,
-					],
-					[
-						'key'               => 'field_5bef0eeeacdc1',
-						'label'             => __( 'Classic Editor', 'mixes-plugin' ),
-						'name'              => 'mmp_classic_editor',
-						'type'              => 'true_false',
-						'instructions'      => __( 'Disables the block editor (a.k.a. Gutenberg) and restores the TinyMCE editor.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => __( 'Use the classic editor', 'mixes-plugin' ),
-						'default_value'     => 0,
-						'ui'                => 1,
-						'ui_on_text'  => __( 'Yes', 'mixes-plugin' ),
-						'ui_off_text' => __( 'No', 'mixes-plugin' ),
 					],
 					[
 						'key'               => 'field_5bd8abd79a46d',
@@ -512,166 +631,6 @@ final class Settings_Fields_ACF {
 						],
 						'default_value'     => '',
 						'placeholder'       => '',
-					],
-
-					/**
-					 * Meta/SEO tab settings.
-					 *
-					 * @since 1.0.0
-					 */
-
-					[
-						'key'               => 'field_5a1989a036067',
-						'label'             => __( 'Meta/SEO', 'mixes-plugin' ),
-						'name'              => '',
-						'type'              => 'tab',
-						'instructions'      => __( '', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'placement'         => 'top',
-						'endpoint'          => 0,
-					],
-					[
-						'key'               => 'field_5a237090744c4',
-						'label'             => __( 'Meta Tags', 'mixes-plugin' ),
-						'name'              => 'mmp_meta_disable_tags',
-						'type'              => 'true_false',
-						'instructions'      => __( 'Disable if you plan on using Yoast SEO or a similarly awful plugin.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => __( 'Check to disable', 'mixes-plugin' ),
-						'default_value'     => 0,
-						'ui'                => 0,
-						'ui_on_text'        => __( 'Disabled', 'mixes-plugin' ),
-						'ui_off_text'       => __( 'Enabled', 'mixes-plugin' ),
-					],
-					[
-						'key'               => 'field_5a198d601b523',
-						'label'             => __( 'Blog Pages Title', 'mixes-plugin' ),
-						'name'              => 'mmp_meta_blog_title',
-						'type'              => 'text',
-						'instructions'      => __( 'Will use the site title if left empty.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => [
-							[
-								[
-									'field'    => 'field_5a237090744c4',
-									'operator' => '!=',
-									'value'    => '1',
-								],
-							],
-						],
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'default_value'     => '',
-						'placeholder'       => '',
-						'prepend'           => '',
-						'append'            => '',
-						'maxlength'         => '',
-					],
-					[
-						'key'               => 'field_5a198bd736068',
-						'label'             => __( 'Blog Pages Description', 'mixes-plugin' ),
-						'name'              => 'mmp_meta_blog_description',
-						'type'              => 'textarea',
-						'instructions'      => __( 'Will use the site tagline if left empty and if a tagline is set.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => [
-							[
-								[
-									'field'    => 'field_5a237090744c4',
-									'operator' => '!=',
-									'value'    => '1',
-								],
-							],
-						],
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'default_value'     => '',
-						'placeholder'       => '',
-						'maxlength'         => '',
-						'rows'              => 4,
-						'new_lines'         => '',
-					],
-					[
-						'key'               => 'field_5a198c1836069',
-						'label'             => __( 'Blog Pages Image', 'mixes-plugin' ),
-						'name'              => 'mmp_meta_blog_image',
-						'type'              => 'image',
-						'instructions'      => __( 'A minimum of 1230px by 600px is recommended for retina display devices.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => [
-							[
-								[
-									'field'    => 'field_5a237090744c4',
-									'operator' => '!=',
-									'value'    => '1',
-								],
-							],
-						],
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'return_format'     => 'array',
-						'preview_size'      => 'medium',
-						'library'           => 'all',
-						'min_width'         => '',
-						'min_height'        => '',
-						'min_size'          => '',
-						'max_width'         => '',
-						'max_height'        => '',
-						'max_size'          => '',
-						'mime_types'        => '',
-					],
-					[
-						'key'               => 'field_5b2fd67604455',
-						'label'             => __( 'Default Meta Image', 'mixes-plugin' ),
-						'name'              => 'mmp_meta_default_image',
-						'type'              => 'image',
-						'instructions'      => __( 'Will be used as a fallback for posts without a featured image and used for archive pages. A minimum of 1230px by 600px is recommended for retina display devices.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => [
-							[
-								[
-									'field'    => 'field_5a237090744c4',
-									'operator' => '!=',
-									'value'    => '1',
-								],
-							],
-						],
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'return_format'     => 'array',
-						'preview_size'      => 'medium',
-						'library'           => 'all',
-						'min_width'         => '',
-						'min_height'        => '',
-						'min_size'          => '',
-						'max_width'         => '',
-						'max_height'        => '',
-						'max_size'          => '',
-						'mime_types'        => '',
 					],
 				],
 				'location' => [
