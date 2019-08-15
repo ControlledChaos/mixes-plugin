@@ -50,13 +50,7 @@ final class Taxes_Register {
     public function register() {
 
         /**
-         * Type: Sample taxonomy (Type).
-         *
-         * Renaming:
-         * Search case "Type" and replace with your post type singular name.
-         * Search case "Types" and replace with your post type plural name.
-         * Search case "mmp_taxonomy" and replace with your taxonomy database name.
-         * Search case "types" and replace with your taxonomy permalink slug.
+         * Taxonomy: Recipe Type
          */
 
         $labels = [

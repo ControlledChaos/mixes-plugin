@@ -60,6 +60,9 @@ class Media {
 	 */
 	public function __construct() {
 
+		// Add categories and tags to media library items.
+		add_action( 'init' , [ $this, 'media_taxonomies' ] );
+
 		// Add image sizes.
 		add_action( 'init', [ $this, 'image_sizes' ] );
 
@@ -93,6 +96,25 @@ class Media {
 		if ( $fancybox ) {
 			require_once MMP_PATH . 'includes/media/class-gallery-shortcode.php';
 		}
+
+	}
+
+	/**
+	 * Add taxonomies to media library
+	 *
+	 * Includes categories and tags for attachment post type.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function media_taxonomies() {
+
+		// Add standard categories.
+		register_taxonomy_for_object_type( 'category', 'attachment' );
+
+		// Add standard tags.
+		register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 
 	}
 
