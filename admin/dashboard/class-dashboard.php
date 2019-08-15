@@ -69,9 +69,6 @@ class Dashboard {
         // Remove contextual help content.
         add_action( 'admin_head', [ $this, 'remove_help' ] );
 
-        // Add contextual help content.
-        add_action( 'admin_head', [ $this, 'add_help' ] );
-
         // Enqueue dashboard stylesheet.
         add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
 
@@ -85,9 +82,6 @@ class Dashboard {
 	 * @return void
 	 */
 	private function dependencies() {
-
-        // Get the dashboard widget class.
-        require MMP_PATH . 'admin/dashboard/class-dashboard-widget.php';
 
         // Get the welcome panel class.
         require MMP_PATH . 'admin/dashboard/class-welcome.php';
@@ -261,68 +255,6 @@ class Dashboard {
         $screen->set_help_sidebar(
 			null
 		);
-
-    }
-
-    /**
-     * Add contextual help content.
-     *
-     * @since  1.0.0
-	 * @access public
-	 * @return void
-     */
-    public function add_help() {
-
-        // Get the screen ID to target the Dashboard.
-        $screen = get_current_screen();
-
-        // Bail if not on the Dashboard screen.
-        if ( $screen->id != 'dashboard' ) {
-			return;
-        }
-
-        // Dashboard widget tab.
-		$screen->add_help_tab( [
-			'id'       => 'help_welcome_panel',
-			'title'    => __( 'Welcome Panel', 'mixes-plugin' ),
-			'content'  => null,
-			'callback' => [ $this, 'help_welcome_panel' ]
-        ] );
-
-        // Dashboard widget tab.
-		$screen->add_help_tab( [
-			'id'       => 'help_dashboard_widgets',
-			'title'    => __( 'Dashboard Widgets', 'mixes-plugin' ),
-			'content'  => null,
-			'callback' => [ $this, 'help_dashboard_widgets' ]
-		] );
-
-        // Add a new sidebar.
-		$screen->set_help_sidebar(
-			$this->help_dashboard_sidebar()
-		);
-
-    }
-
-    /**
-     * Get welcome panel help tab content.
-	 *
-	 * @since      1.0.0
-     */
-	public function help_welcome_panel() {
-
-        include_once MMP_PATH . 'admin/dashboard/partials/help/help-welcome-panel.php';
-
-    }
-
-    /**
-     * Get dashboard widget help tab content.
-	 *
-	 * @since      1.0.0
-     */
-	public function help_dashboard_widgets() {
-
-        include_once MMP_PATH . 'admin/dashboard/partials/help/help-dashboard-widgets.php';
 
     }
 
