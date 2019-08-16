@@ -92,7 +92,7 @@ final class Post_Types_Register {
         $options = [
             'label'               => __( 'Recipes', 'mixes-plugin' ),
             'labels'              => $labels,
-            'description'         => __( 'Recipe type description.', 'mixes-plugin' ),
+            'description'         => __( 'Recipes for craft cocktails & mocktails, smoothies, paletas, and more..', 'mixes-plugin' ),
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
@@ -116,18 +116,14 @@ final class Post_Types_Register {
                 'editor',
                 'thumbnail',
                 'excerpt',
-                'trackbacks',
-                'custom-fields',
                 'comments',
                 'revisions',
-                'author',
-                'page-attributes',
-                'post-formats'
+                'page-attributes'
             ],
             'taxonomies'          => [
                 'category',
                 'post_tag',
-                'mmp_taxonomy' // Change to your custom taxonomy name.
+                'recipe_types'
             ],
         ];
 
@@ -136,8 +132,6 @@ final class Post_Types_Register {
 
         /**
          * Register the post type
-         *
-         * Maximum 20 characters, cannot contain capital letters or spaces.
          */
         register_post_type(
             'recipe',
