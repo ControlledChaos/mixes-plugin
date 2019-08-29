@@ -29,7 +29,6 @@ $images      = get_field( 'recipe_gallery' );
 
 // Begin output.
 ?>
-<script>jQuery(document).ready(function($){$('.recipe-video').fitVids();});</script>
 <?php if ( $description ) : ?>
 <section class="recipe-section recipe-description">
 	<h2><?php _e( 'Recipe Description', 'mixes-plugin' ); ?></h2>

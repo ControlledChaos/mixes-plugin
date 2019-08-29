@@ -101,17 +101,17 @@ class Meta_Image {
 
 			// If in the blog index and if the Blog Image field is not empty.
 			if ( is_home() && ! empty( $blog_image ) && is_array( $blog_image ) ) {
-				$size  = 'Meta Image';
+				$size  = 'meta-image';
 				$src   = $blog_image['sizes'][ $size ];
 
 			// If in an archive and if the Default Image field is not empty.
 			} elseif ( is_archive() && ! empty( $default_image ) && is_array( $blog_image ) ) {
-				$size  = 'Meta Image';
+				$size  = 'meta-image';
 				$src   = $default_image['sizes'][ $size ];
 
 			// If on singular pages with a featured image, but not 404.
 			} elseif ( is_singular() && has_post_thumbnail() && ! is_404() ) {
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Meta Image', [ 1200, 630 ], true, '' );
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'meta-image', [ 1200, 630 ], true, '' );
 				$src   = $image[0];
 
 			/**
@@ -119,7 +119,7 @@ class Meta_Image {
 			 * the Default Image field is not empty, but not 404.
 			 */
 			} elseif ( is_singular() && ! has_post_thumbnail() && ! empty( $default_image ) && is_array( $default_image ) && ! is_404() ) {
-				$size  = 'Meta Image';
+				$size  = 'meta-image';
 				$src   = $default_image['sizes'][ $size ];
 
 			// Otherwise use the image path defined in the core plugin file.
@@ -140,7 +140,7 @@ class Meta_Image {
 			 * the 404 page will use the default image.
 			 */
 			if ( ! is_404() ) {
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'Meta Image', [ 1200, 630 ], true, '' );
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'meta-image', [ 1200, 630 ], true, '' );
 			}
 
 			// Use the featured image on singular pages if there is one.

@@ -121,7 +121,7 @@ class Frontend {
 		require_once MMP_PATH . 'frontend/class-head-scripts.php';
 
 		// Meta tags for SEO.
-		// include_once MMP_PATH . 'frontend/meta-tags/class-meta-tags.php';
+		include_once MMP_PATH . 'frontend/meta-tags/class-meta-tags.php';
 
 		// The frontend content filters for post types.
 		require_once MMP_PATH . 'frontend/class-content-filters.php';

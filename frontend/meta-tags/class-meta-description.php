@@ -60,7 +60,7 @@ class Meta_Description {
 	public function __construct() {
 
 		// Add description to the meta tag.
-		add_action( 'mmp_meta_description_tag', [ $this, 'description' ] );
+		add_action( 'mmp_meta_description_tag', [ $this, 'meta_description' ] );
 
 	}
 
@@ -71,7 +71,7 @@ class Meta_Description {
 	 * @access public
 	 * @return string
 	 */
-	public function description() {
+	public function meta_description() {
 
 		// Bail on 404 error pages because of non-object errors.
 		if ( is_404() ) {
@@ -83,90 +83,32 @@ class Meta_Description {
 
 		// Check if a tagline has been entered else return an empty string.
 		if ( ! empty( $tagline ) ) {
-			$tagline_desc = wp_strip_all_tags( $tagline );
+			$tagline = $tagline;
 		} else {
-			$tagline_desc = '';
+			$tagline = '';
 		}
 
-		/**
-		 * Check for the Advanced Custom Fields PRO plugin or the Options Page
-		 * addon for free ACF. If there is a blog page description from the ACF
-		 * 'Site Settings' page the we'll use that, otherwise we'll look for a
-		 * description on the standard 'Site Settings' page.
-		 */
-		if ( mmp_acf_options() ) {
-
-			/**
-			 * Check for content in the ACF blog description field.
-			 *
-			 * An additional parameter of 'option' must be included to target the options page.
-			 */
-			$acf_blog_desc = get_field( 'mmp_meta_blog_description', 'option' );
-
-			// If the ACF field is empty use the tagline.
-			if ( $acf_blog_desc ) {
-				$blog_desc = $acf_blog_desc;
-			} else {
-				$blog_desc = $tagline_desc;
-			}
-
+		// Conditional variables - ACF or not.
+		if ( mmp_acf_pro() ) {
+			$recipe_summary = get_field( 'recipe_summary' );
 		} else {
-
-			// Check for content in the blog description standard field.
-			$wp_blog_desc = get_option( 'mmp_meta_blog_description' );
-
-			// If the settings field is empty use the tagline.
-			if ( $wp_blog_desc ) {
-				$blog_desc = $wp_blog_desc;
-			} else {
-				$blog_desc = $tagline_desc;
-			}
-
+			$recipe_summary = __( 'Another fine recipe from ', 'mixes-plugin' ) . get_bloginfo( 'name' );
 		}
 
-		// For search pages, get the terms of the search query.
-		$search_query     = get_search_query();
-
-		// Default search description: "Searching for $search_query".
-		$search_desc      = wp_strip_all_tags(
-			sprintf(
-				'%1s \'%2s\'',
-				__( 'Showing results for', 'mixes-plugin' ),
-				$search_query
-			)
-		);
-
-		// Apply a filter to hard-coded text.
-		$search_meta_desc = apply_filters( 'mmp_meta_description_search', $search_desc );
-
-		// Look for a manual excerpt.
-		$manual_excerpt   = wp_strip_all_tags( get_the_excerpt() );
-
-		// Auto excerpt from content as a fallback.
-		$auto_excerpt     = wp_strip_all_tags( wp_trim_words( get_the_content(), 40, '&hellp;' ) );
-
-		// Use the tagline for the front page.
 		if ( is_front_page() ) {
-			$description = $tagline_desc;
-		// Use the blog description established above for blog pages.
-		} elseif ( is_home() ) {
-			$description = $blog_desc;
-		// Use the search text above of the filtered text on search pages.
-		} elseif ( is_search() ) {
-			$description = $search_meta_desc;
-		// For post type pages check for a manual excerpt.
+			$description = $tagline;
+		} elseif ( is_home() && mmp_acf_pro() ) {
+			$description = $tagline;
+		} elseif ( is_singular( 'recipe' ) ) {
+			$description = $recipe_summary;
 		} elseif ( has_excerpt() ) {
-			$description = $manual_excerpt;
-		// Otherwise use the auto excerpt if no manual excerpt is found.
+			$description = get_the_excerpt();
 		} else {
-			$description = $auto_excerpt;
+			$description = $tagline;
 		}
-
-		// Apply a filter for other use cases.
-		$meta_description = apply_filters( 'mmp_meta_description', $description );
 
 		// Echo the conditional description in the meta tag.
-		echo $meta_description;
+		echo esc_html( $description );
 
 	}
 
