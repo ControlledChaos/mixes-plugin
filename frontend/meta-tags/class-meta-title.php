@@ -112,7 +112,7 @@ class Meta_Title {
 
 		// Use the acrhive title for the acrhive pages.
 		} elseif ( is_archive() ) {
-			$title = esc_html( the_archive_title() );
+			$title = esc_html( get_the_archive_title() );
 
 		// Use custom text for search pages.
 		} elseif ( is_search() ) {
@@ -124,7 +124,7 @@ class Meta_Title {
 		}
 
 		// Echo the conditional title in the meta tag.
-		echo esc_attr( esc_html( $title ) );
+		echo esc_attr( $title );
 
 	}
 

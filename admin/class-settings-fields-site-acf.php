@@ -236,92 +236,6 @@ final class Settings_Fields_ACF {
 					],
 
 					/**
-					 * Dashboard tab settings.
-					 *
-					 * @since 1.0.0
-					 */
-
-					[
-						'key'               => 'field_5a0c8d7232b94',
-						'label'             => __( 'Dashboard', 'mixes-plugin' ),
-						'name'              => '',
-						'type'              => 'tab',
-						'instructions'      => __( '', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'placement'         => 'top',
-						'endpoint'          => 0,
-					],
-					[
-						'key'               => 'field_5b4807983ccaf',
-						'label'             => __( 'Custom Welcome', 'mixes-plugin' ),
-						'name'              => 'mmp_custom_welcome',
-						'type'              => 'true_false',
-						'instructions'      => __( '', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => __( 'Use the custom Welcome panel on the Dashboard', 'mixes-plugin' ),
-						'default_value'     => 0,
-						'ui'                => 0,
-						'ui_on_text'        => '',
-						'ui_off_text'       => '',
-					],
-					[
-						'key'               => 'field_5b48081b3ccb0',
-						'label'             => __( 'Remove Welcome Dismiss', 'mixes-plugin' ),
-						'name'              => 'mmp_remove_welcome_dismiss',
-						'type'              => 'true_false',
-						'instructions'      => __( '', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => __( 'Remove the Welcome panel dismiss button.', 'mixes-plugin' ),
-						'default_value'     => 0,
-						'ui'                => 0,
-						'ui_on_text'        => '',
-						'ui_off_text'       => '',
-					],
-					[
-						'key'               => 'field_5a0c8f393edd6',
-						'label'             => __( 'Hide Widgets', 'mixes-plugin' ),
-						'name'              => 'mmp_dashboard_hide_widgets',
-						'type'              => 'checkbox',
-						'instructions'      => __( 'Select the Dashboard widgets to hide.', 'mixes-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper' => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'choices'           => [
-							'welcome'   => __( 'Welcome', 'mixes-plugin' ),
-							'at_glance' => __( 'At a Glance', 'mixes-plugin' ),
-							'activity'  => __( 'Activity', 'mixes-plugin' ),
-						],
-						'allow_custom'      => 0,
-						'save_custom'       => 0,
-						'default_value'     => [],
-						'layout'            => 'horizontal',
-						'toggle'            => 1,
-						'return_format'     => 'value',
-					],
-
-					/**
 					 * Admin Menu tab settings.
 					 *
 					 * @since 1.0.0
@@ -526,6 +440,8 @@ final class Settings_Fields_ACF {
 							'users'   => __( 'Users', 'mixes-plugin' ),
 							'tools'   => __( 'Tools', 'mixes-plugin' ),
 							'fields'  => __( 'Custom Fields', 'mixes-plugin' ),
+							'search'  => __( 'Search & Filter', 'mixes-plugin' ),
+							'login'   => __( 'Theme My Login', 'mixes-plugin' )
 						],
 						'allow_custom'      => 0,
 						'save_custom'       => 0,

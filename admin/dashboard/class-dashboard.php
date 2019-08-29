@@ -173,55 +173,11 @@ class Dashboard {
 		// Hide Quick Draft (QuickPress) widget.
 		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
 
-        // If Advanced Custom Fields Pro is active.
-        if ( mmp_acf_options() ) {
+		// Hide At a Glance widget.
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
 
-            // Get the multiple checkbox field.
-            $hide = get_field( 'mmp_dashboard_hide_widgets', 'option' );
-
-            // Hide the Welcome panel.
-            if ( $hide && in_array( 'welcome', $hide ) ) {
-                remove_action( 'welcome_panel', 'wp_welcome_panel' );
-            }
-
-            // Hide At a Glance widget.
-            if ( $hide && in_array( 'at_glance', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-            }
-
-            // Hide Activity widget.
-            if ( $hide && in_array( 'activity', $hide ) ) {
-                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
-            }
-
-        // If Advanced Custom Fields is not active.
-        } else {
-
-            /**
-             * Get WordPress fields, not ACF.
-             */
-
-            // Get options.
-            $welcome    = get_option( 'mmp_hide_welcome' );
-            $at_glance  = get_option( 'mmp_hide_at_glance' );
-            $activity   = get_option( 'mmp_hide_activity' );
-
-            // Hide the Welcome panel.
-            if ( $welcome ) {
-				remove_action( 'welcome_panel', 'wp_welcome_panel' );
-			}
-
-            // Hide At a Glance widget.
-            if ( $at_glance ) {
-                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-            }
-
-            // Hide Activity widget.
-            if ( $activity ) {
-                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
-            }
-
-        }
+		// Hide Activity widget.
+		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
 
     }
 

@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 } ?>
 
 <!-- Standard meta -->
-<meta name="title" content="<?php esc_attr( do_action( 'mmp_meta_title_tag' ) ); ?>" />
+<meta name="title" content="<?php do_action( 'mmp_meta_title_tag' ); ?>" />
 <?php if ( is_404() ) : ?>
 <meta name="description" content="404 <?php esc_attr( _e( 'Not Found' ) ); ?>" />
 <?php else : ?>

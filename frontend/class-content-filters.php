@@ -78,7 +78,7 @@ class Content_Filters {
 	public function recipe_archive_filter( $content ) {
 
 		// Return the default content if not cabins for sale.
-		if ( ! ( is_post_type_archive( 'recipe' ) || is_tax( 'recipe_types' ) ) ) {
+		if ( ! ( is_post_type_archive( 'recipe' ) || is_tax( 'recipe_type' ) ) ) {
 			return $content;
 		}
 

@@ -89,7 +89,7 @@ class Post_Types_Taxes {
 		require_once MMP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
 
 		// Capability to add custom taxonomy templates.
-		require_once MMP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
+		// require_once MMP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
 
 	}
 

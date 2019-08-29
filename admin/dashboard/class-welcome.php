@@ -58,43 +58,13 @@ class Welcome {
 	 */
     public function __construct() {
 
-		/**
-		 * Remove the welcome panel dismiss button.
-		 *
-		 * @since 1.0.0
-		 */
+		// Remove the welcome panel dismiss button.
+		add_action( 'admin_head', [ $this, 'dismiss' ] );
 
-		// If ACF is active, get the field from the ACF options page.
-		if ( mmp_acf_options() ) {
-			$dismiss = get_field( 'mmp_remove_welcome_dismiss', 'option' );
-
-		// If ACF is not active, get the field from the WordPress/ClassicPress options page.
-		} else {
-			$dismiss = get_option( 'mmp_remove_welcome_dismiss' );
-		}
-
-		if ( $dismiss ) {
-			add_action( 'admin_head', [ $this, 'dismiss' ] );
-		}
-
-		/**
-		 * Use the custom Welcome panel if option selected.
-		 */
-
-		// If ACF is active, get the field from the ACF options page.
-		if ( mmp_acf_options() ) {
-			$welcome = get_field( 'mmp_custom_welcome', 'option' );
-		} else {
-			$welcome = get_option( 'mmp_custom_welcome' );
-		}
-
-		if ( $welcome ) {
-			remove_action( 'welcome_panel', 'wp_welcome_panel' );
-			add_action( 'welcome_panel', [ $this, 'welcome_panel' ], 25 );
-
-			// Register the welcome panel areas.
-			add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
-		}
+		// Use the custom Welcome panel if option selected
+		remove_action( 'welcome_panel', 'wp_welcome_panel' );
+		add_action( 'welcome_panel', [ $this, 'welcome_panel' ], 25 );
+		// add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
 
 	}
 
@@ -200,7 +170,7 @@ class Welcome {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( MMP_ADMIN_SLUG . '-welcome', MMP_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
+            // wp_enqueue_style( MMP_ADMIN_SLUG . '-welcome', MMP_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
         }
 
 	}

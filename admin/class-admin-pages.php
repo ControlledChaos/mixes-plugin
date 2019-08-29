@@ -58,7 +58,7 @@ class Admin_Pages {
     public function __construct() {
 
         // Add an about page for the plugin.
-        add_action( 'admin_menu', [ $this, 'about_plugin' ] );
+        // add_action( 'admin_menu', [ $this, 'about_plugin' ] );
 
         // Add admin header.
         if ( mmp_acf_options() ) {
@@ -82,7 +82,10 @@ class Admin_Pages {
 
             // Include the admin header template.
             add_action( 'admin_head', [ $this, 'admin_header_layout' ] );
-        }
+		}
+
+		// Hide screen options & help tabs.
+		add_filter( 'screen_options_show_screen', [ $this, 'screen_options_help' ] );
 
         // Replace default post title placeholders.
         add_filter( 'enter_title_here', [ $this, 'title_placeholders' ] );
@@ -434,7 +437,34 @@ class Admin_Pages {
         // Render all styles.
         echo $style;
 
-    }
+	}
+
+	/**
+     * Replace default post title placeholders.
+     *
+     * @since  1.0.0
+	 * @access public
+     * @param  object $title Stores the 'Enter title here" placeholder.
+	 * @return object Returns the title placeholder.
+     * @throws Non-Object Throws an error on attachment edit screens since
+     *         there is no placeholder, so that post type is nullified.
+     *
+     * @todo   Review this if or when a check becomes available for the
+     *         new WordPress block editor (Gutenberg).
+     */
+	public function screen_options_help() {
+
+		// Get the screen object.
+		global $pagenow;
+
+		// Hide on the dashboard.
+		if ( 'index.php' === $pagenow ) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
 
     /**
      * Replace default post title placeholders.
@@ -607,10 +637,10 @@ class Admin_Pages {
     public function image_column_head( $defaults ) {
 
         // The column heading name.
-        $name    = __( 'Featured Image', 'mixes-plugin' );
+        $name    = __( 'Featured Image', 'controlled-chaos-plugin' );
 
         // Apply a filter for conditional modification.
-        $heading = apply_filters( 'mmp_image_column_head', $name );
+        $heading = apply_filters( 'ccp_image_column_head', $name );
 
         // The column heading name to new `featured_image` column.
         $defaults['featured_image'] = esc_html__( $heading );

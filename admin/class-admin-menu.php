@@ -58,7 +58,7 @@ class Admin_Menu {
     public function __construct() {
 
         // Remove menu items.
-        add_action( 'admin_menu', [ $this, 'hide' ] );
+        add_action( 'admin_init', [ $this, 'hide' ] );
 
         // Hide ACF field groups UI.
         if ( mmp_acf_options() ) {
@@ -142,7 +142,17 @@ class Admin_Menu {
             // Hide Tools link.
             if ( $options && in_array( 'tools', $options ) ) {
                 remove_menu_page( 'tools.php' );
-            }
+			}
+
+			// Hide Search & Filter page.
+			if ( $options && in_array( 'search', $options ) ) {
+                remove_menu_page( 'searchandfilter-settings' );
+			}
+
+			// Hide Theme My Login page.
+			if ( $options && in_array( 'login', $options ) ) {
+                remove_menu_page( 'theme-my-login' );
+			}
 
         } else {
 

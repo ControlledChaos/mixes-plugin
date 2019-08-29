@@ -72,9 +72,9 @@ final class Post_Types_Register {
             'not_found'             => __( 'No Recipes Found', 'mixes-plugin' ),
             'not_found_in_trash'    => __( 'No Recipes Found in Trash', 'mixes-plugin' ),
             'parent_item_colon'     => __( 'Parent Recipe', 'mixes-plugin' ),
-            'featured_image'        => __( 'Featured image for this Recipe', 'mixes-plugin' ),
-            'set_featured_image'    => __( 'Set featured image for this Recipe', 'mixes-plugin' ),
-            'remove_featured_image' => __( 'Remove featured image for this Recipe', 'mixes-plugin' ),
+            // 'featured_image'        => __( 'Featured image for this Recipe', 'mixes-plugin' ),
+            // 'set_featured_image'    => __( 'Set featured image for this Recipe', 'mixes-plugin' ),
+            // 'remove_featured_image' => __( 'Remove featured image for this Recipe', 'mixes-plugin' ),
             'use_featured_image'    => __( 'Use as featured image for this Recipe', 'mixes-plugin' ),
             'archives'              => __( 'Recipe archives', 'mixes-plugin' ),
             'insert_into_item'      => __( 'Insert into Recipe', 'mixes-plugin' ),
@@ -121,18 +121,17 @@ final class Post_Types_Register {
                 'page-attributes'
             ],
             'taxonomies'          => [
-                'category',
-                'post_tag',
-                'recipe_types'
+				'recipe_type',
+				'recipe_season',
+				'liquor_type',
+                'post_tag'
             ],
         ];
 
         // Apply a filter to arguments for customization.
         $options = apply_filters( 'recipe_args', $options );
 
-        /**
-         * Register the post type
-         */
+        // Register the Recipe post type.
         register_post_type(
             'recipe',
             $options

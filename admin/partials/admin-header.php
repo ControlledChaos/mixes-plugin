@@ -20,56 +20,40 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @since 1.0.0
  */
 
-// Get the site title.
-$title       = get_bloginfo( 'name' );
-
-// Get the site tagline.
-$description = get_bloginfo( 'description' );
-
-// Return null if no site title.
-if ( ! empty( $title ) ) {
-    $title = get_bloginfo( 'name' );
-} else {
-    $title = null;
-}
+// The site title markup.
+$title = sprintf(
+	'<p class="site-title"><a href="%1s" rel="home"><span class="title-span-one">%2s</span> <span class="title-span-two">%3s</span></a></p>',
+	esc_attr( esc_url( admin_url() ) ),
+	__( 'Monica', 'mixes-theme' ),
+	__( 'Mixes', 'mixes-theme' )
+);
 
 // Return a reminder if no site tagline.
-if ( ! empty( $description ) ) {
+if ( ! empty( get_bloginfo( 'description' ) ) ) {
     $description = get_bloginfo( 'description' );
 } else {
     $description = __( 'Add a tagline in Settings > General or change this in', 'mixes-plugin' ) . ' <code>mixes-plugin/admin/partials/admin-header.php</code>';
 }
 
-// Get the admin menu registered in `class-admin-pages.php`.
-$menu = 'admin-header';
-
-// Apply filters to the variables.
-$title       = apply_filters( 'mmp_admin_header_title', $title );
-$description = apply_filters( 'mmp_admin_header_description', $description );
-$menu        = apply_filters( 'mmp_admin_header_menu', $menu );
 ?>
-<?php do_action( 'mmp_before_admin_header' ); ?>
-<header class="mmp-admin-header">
-    <?php do_action( 'mmp_before_admin_site_branding' ); ?>
-    <div class="admin-site-branding">
-        <p class="admin-site-title" itemprop="name"><a href="<?php echo admin_url(); ?>"><?php echo $title; ?></a></p>
-        <p class="admin-site-description"><?php echo $description; ?></p>
-    </div>
-    <?php do_action( 'mmp_after_admin_site_branding' ); ?>
-    <?php do_action( 'mmp_before_admin_navigation' ); ?>
-    <nav class="admin-navigation">
-        <?php wp_nav_menu(
-            array(
-                'theme_location'  => $menu,
-                'container'       => false,
-                'menu_id'         => 'admin-navigation-list',
-                'menu_class'      => 'admin-navigation-list',
-                'before'          => '',
-                'after'           => '',
-                'fallback_cb'     => ''
-            )
-        ); ?>
-    </nav>
-    <?php do_action( 'mmp_after_admin_navigation' ); ?>
+<nav id="site-navigation" class="main-navigation admin-navigation" role="directory">
+	<?php wp_nav_menu(
+		[
+			'theme_location' => 'admin-header',
+			'menu_id'        => 'admin-navigation-list',
+			'container'      => false,
+			'menu_id'        => 'admin-navigation-list',
+			'fallback_cb'    => null
+		]
+	); ?>
+</nav>
+<header class="site-header admin-header">
+	<?php get_template_part( 'template-parts/site-branding' ); ?>
+	<p class="site-description admin-site-description"><?php echo $description; ?></p>
 </header>
-<?php do_action( 'mmp_after_admin_header' ); ?>
+<?php
+// Hero image on dashboard screen only.
+global $pagenow;
+if ( 'index.php' === $pagenow ) {
+	get_template_part( 'template-parts/hero' );
+}

@@ -115,7 +115,7 @@ class Gallery_Shortcode {
 
 		$html5 = current_theme_supports( 'html5', 'gallery' );
 		$atts  = apply_filters(
-			'ccd_fancybox_atts',
+			'mmp_fancybox_atts',
 				shortcode_atts( [
 
 				// Default parameters.
@@ -217,21 +217,15 @@ class Gallery_Shortcode {
 		$icontag       = tag_escape( $atts['icontag'] );
 		$valid_tags    = wp_kses_allowed_html( 'post' );
 
-		if ( ! isset( $valid_tags[ $itemtag ] ) ) {
-			$itemtag = 'dl';
-		}
-		if ( ! isset( $valid_tags[ $captiontag ] ) ) {
-			$captiontag = 'dd';
-		}
-		if ( ! isset( $valid_tags[ $icontag ] ) ) {
-			$icontag = 'dt';
-		}
+		$itemtag    = 'li';
+		$captiontag = 'figcaption';
+		$icontag    = 'figure';
 
-		$columns       = intval( $atts['columns'] );
-		$itemwidth     = $columns > 0 ? floor(100/$columns) : 100;
-		$float         = is_rtl() ? 'right' : 'left';
+		$columns   = intval( $atts['columns'] );
+		$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+		$float     = is_rtl() ? 'right' : 'left';
 
-		$selector      = "gallery-{$instance}";
+		$selector = "gallery-{$instance}";
 
 		$gallery_style = '';
 
@@ -314,7 +308,7 @@ class Gallery_Shortcode {
 		}
 
 		$size_class      = sanitize_html_class( $atts['size'] );
-		$gallery_div     = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+		$gallery_div     = "<div id='$selector' class='gallery-columns-{$columns} gallery-size-{$size_class}'><ul class='gallery galleryid-{$id}'>";
 		$gallery_options =
 		"<script>
 		jQuery(document).ready( function() {
@@ -404,17 +398,15 @@ class Gallery_Shortcode {
 			}
 
 			$output .= "<{$itemtag} class='gallery-item'>";
-			$output .= "
-				<{$icontag} class='gallery-icon {$orientation}'>
-					$image_output
-				</{$icontag}>";
-
+			$output .= "<{$icontag} class='gallery-figure {$orientation}'>";
+			$output .= "$image_output";
 			if ( $captiontag && trim( $attachment->post_excerpt ) ) {
 				$output .= "
 					<{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
 					" . wptexturize( $attachment->post_excerpt ) . "
 					</{$captiontag}>";
 			}
+			$output .= "</{$icontag}>";
 			$output .= "</{$itemtag}>";
 			if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
 				$output .= '<br style="clear: both" />';
@@ -427,7 +419,7 @@ class Gallery_Shortcode {
 		}
 
 		$output .= "
-			</div>\n";
+			</ul></div>\n";
 
 		return $output;
 	}

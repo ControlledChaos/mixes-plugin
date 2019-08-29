@@ -66,6 +66,9 @@ class Frontend {
 	 */
 	public function __construct() {
 
+		// Get the first paragraph of a post as the excerpt.
+		// add_filter( 'wp_trim_excerpt', [ $this, 'first_paragraph_excerpt' ], 10, 2 );
+
 		// Deregister Dashicons for users not logged in.
 		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
 
@@ -118,12 +121,30 @@ class Frontend {
 		require_once MMP_PATH . 'frontend/class-head-scripts.php';
 
 		// Meta tags for SEO.
-		include_once MMP_PATH . 'frontend/meta-tags/class-meta-tags.php';
+		// include_once MMP_PATH . 'frontend/meta-tags/class-meta-tags.php';
 
 		// The frontend content filters for post types.
 		require_once MMP_PATH . 'frontend/class-content-filters.php';
 
 	}
+
+	/**
+	 * Get the first paragraph of a post as the excerpt.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the first paragraph.
+	 */
+	public function first_paragraph_excerpt( $text, $raw_excerpt ) {
+
+		if ( ! $raw_excerpt ) {
+		  $content = apply_filters( 'the_content', get_the_content() );
+		  $text    = substr( $content, 0, strpos( $content, '</p>' ) + 4 );
+		}
+
+		return $text;
+
+	  }
 
 	/**
 	 * Deregister Dashicons for users not logged in.
