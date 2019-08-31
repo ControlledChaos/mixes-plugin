@@ -111,6 +111,9 @@ class Admin {
 	 */
 	private function dependencies() {
 
+		// Admin page to display instructions post types.
+		require_once MMP_PATH . 'admin/class-admin-page-instructions.php';
+
 		// The core settings class for the plugin.
 		require_once MMP_PATH . 'admin/class-settings.php';
 

@@ -84,8 +84,11 @@ class Filter_By_Template {
 	 */
 	public function filter_dropdown() {
 
+		// Get the current screen as a variable.
+        $screen = get_current_screen();
+
 		// Exclude the Media Library screen.
-		if ( $GLOBALS['pagenow'] === 'upload.php' ) {
+		if ( $GLOBALS['pagenow'] === 'upload.php' || 'site_admin' == $screen->post_type ) {
 			return;
 		}
 
@@ -155,6 +158,14 @@ class Filter_By_Template {
 	 * @return array
 	 */
 	public function template_columns_head( $columns ) {
+
+		// Get the current screen as a variable.
+        $screen = get_current_screen();
+
+        // Do not apply to admin instructions post type.
+        if ( 'site_admin' == $screen->post_type ) {
+			return $columns;
+		}
 
 		// The column heading name to new `template` column.
 		$columns['template'] = __( 'Template', 'mixes-plugin' );

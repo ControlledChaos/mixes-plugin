@@ -52,8 +52,10 @@ if ( ! empty( get_bloginfo( 'description' ) ) ) {
 	<p class="site-description admin-site-description"><?php echo $description; ?></p>
 </header>
 <?php
+
 // Hero image on dashboard screen only.
 global $pagenow;
-if ( 'index.php' === $pagenow ) {
+
+if ( 'index.php' === $pagenow && ! isset( $_GET['page'] ) ) {
 	get_template_part( 'template-parts/hero' );
 }

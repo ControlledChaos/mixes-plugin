@@ -49,7 +49,7 @@ class Post_Type_Tax_Functions {
 	}
 
 	/**
-	 * Constructor method.
+	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -57,8 +57,72 @@ class Post_Type_Tax_Functions {
 	 */
 	public function __construct() {
 
+		// Make Instructions post type private by default.
+		add_action( 'transition_post_status', [ $this, 'private_posts' ], 10, 3 );
+		add_action( 'post_submitbox_misc_actions', [ $this, 'private_posts_metabox' ] );
+
 		// Replace "Post" in the update messages.
 		add_filter( 'post_updated_messages', [ $this, 'update_messages' ], 99 );
+
+	}
+
+	/**
+	 * Make Instructions post type private by default
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function private_posts( $new_status, $old_status, $post ) {
+
+		if ( 'site_admin' == $post->post_type && 'publish' == $new_status && $old_status != $new_status ) {
+			$post->post_status = 'private';
+			wp_update_post( $post );
+		}
+
+	}
+
+	/**
+	 * Instructions post type publish metabox
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns CSS and JavaScript for the metabox.
+	 */
+	public function private_posts_metabox() {
+
+		// Access global variables.
+		global $post;
+
+		// Bail if not instructions post type.
+		if ( ! 'site_admin' == $post->post_type ) {
+			return;
+		}
+
+		// Function variables.
+		$message = __( '<strong>Note:</strong> Instruction posts are always <strong>private</strong>.', 'mixes-plugin' );
+		$post->post_password = '';
+		$visibility = 'private';
+		$visibility_text = __( 'Private', 'mixes-plugin' );
+		?>
+		<style type="text/css">
+			.private-nosts-note {
+				margin: 0;
+				padding: 1em;
+			}
+		</style>
+		<script type="text/javascript">
+			(function($){
+				try {
+					$('#post-visibility-display').text('<?php echo $visibility_text; ?>');
+					$('#hidden-post-visibility').val('<?php echo $visibility; ?>');
+				} catch(err){}
+			}) (jQuery);
+		</script>
+		<div class="private-nosts-note">
+			<?php echo $message; ?>
+		</div>
+		<?php
 
 	}
 

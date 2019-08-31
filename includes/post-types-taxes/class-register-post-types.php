@@ -72,9 +72,9 @@ final class Post_Types_Register {
             'not_found'             => __( 'No Recipes Found', 'mixes-plugin' ),
             'not_found_in_trash'    => __( 'No Recipes Found in Trash', 'mixes-plugin' ),
             'parent_item_colon'     => __( 'Parent Recipe', 'mixes-plugin' ),
-            // 'featured_image'        => __( 'Featured image for this Recipe', 'mixes-plugin' ),
-            // 'set_featured_image'    => __( 'Set featured image for this Recipe', 'mixes-plugin' ),
-            // 'remove_featured_image' => __( 'Remove featured image for this Recipe', 'mixes-plugin' ),
+            'featured_image'        => __( 'Featured image for this Recipe', 'mixes-plugin' ),
+            'set_featured_image'    => __( 'Set featured image for this Recipe', 'mixes-plugin' ),
+            'remove_featured_image' => __( 'Remove featured image for this Recipe', 'mixes-plugin' ),
             'use_featured_image'    => __( 'Use as featured image for this Recipe', 'mixes-plugin' ),
             'archives'              => __( 'Recipe archives', 'mixes-plugin' ),
             'insert_into_item'      => __( 'Insert into Recipe', 'mixes-plugin' ),
@@ -92,7 +92,7 @@ final class Post_Types_Register {
         $options = [
             'label'               => __( 'Recipes', 'mixes-plugin' ),
             'labels'              => $labels,
-            'description'         => __( 'Recipes for craft cocktails & mocktails, smoothies, paletas, and more..', 'mixes-plugin' ),
+            'description'         => __( 'Recipes for craft cocktails & mocktails, smoothies, paletas, and more&hellip;', 'mixes-plugin' ),
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
@@ -134,6 +134,86 @@ final class Post_Types_Register {
         // Register the Recipe post type.
         register_post_type(
             'recipe',
+            $options
+		);
+
+		/**
+         * Post Type: Admin Instructions
+		 *
+		 * If this post type UI is hidden from the admin menu then go to
+		 * @link https://www.monicamixes.com/wp-admin/edit.php?post_type=site_admin
+		 * to add or edit the instructions.
+         */
+
+        $labels = [
+            'name'                  => __( 'Instructions', 'mixes-plugin' ),
+            'singular_name'         => __( 'Instruction', 'mixes-plugin' ),
+            'menu_name'             => __( 'Instructions', 'mixes-plugin' ),
+            'all_items'             => __( 'Instructions', 'mixes-plugin' ),
+            'add_new'               => __( 'Add New', 'mixes-plugin' ),
+            'add_new_item'          => __( 'Add New Instruction', 'mixes-plugin' ),
+            'edit_item'             => __( 'Edit Instruction', 'mixes-plugin' ),
+            'new_item'              => __( 'New Instruction', 'mixes-plugin' ),
+            'view_item'             => __( 'View Instruction', 'mixes-plugin' ),
+            'view_items'            => __( 'View Instructions', 'mixes-plugin' ),
+            'search_items'          => __( 'Search', 'mixes-plugin' ),
+            'not_found'             => __( 'No Instructions Found', 'mixes-plugin' ),
+            'not_found_in_trash'    => __( 'No Instructions Found in Trash', 'mixes-plugin' ),
+            'parent_item_colon'     => __( 'Parent Instruction', 'mixes-plugin' ),
+            'featured_image'        => __( 'Featured image for this Instruction', 'mixes-plugin' ),
+            'set_featured_image'    => __( 'Set featured image for this Instruction', 'mixes-plugin' ),
+            'remove_featured_image' => __( 'Remove featured image for this Instruction', 'mixes-plugin' ),
+            'use_featured_image'    => __( 'Use as featured image for this Instruction', 'mixes-plugin' ),
+            'archives'              => __( 'Instruction archives', 'mixes-plugin' ),
+            'insert_into_item'      => __( 'Insert into Instruction', 'mixes-plugin' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this Instruction', 'mixes-plugin' ),
+            'filter_items_list'     => __( 'Filter Instructions', 'mixes-plugin' ),
+            'items_list_navigation' => __( 'Instructions list navigation', 'mixes-plugin' ),
+            'items_list'            => __( 'Instructions List', 'mixes-plugin' ),
+            'attributes'            => __( 'Instruction Attributes', 'mixes-plugin' ),
+            'parent_item_colon'     => __( 'Parent Instruction', 'mixes-plugin' ),
+        ];
+
+        // Apply a filter to labels for customization.
+        $labels = apply_filters( 'instruction_labels', $labels );
+
+        $options = [
+            'label'               => __( 'Instructions', 'mixes-plugin' ),
+            'labels'              => $labels,
+            'description'         => __( 'Instructions for using the Monica Mixes website.', 'mixes-plugin' ),
+            'public'              => true,
+            'publicly_queryable'  => true,
+            'show_ui'             => true,
+            'show_in_rest'        => false,
+            'rest_base'           => '',
+            'has_archive'         => true,
+            'show_in_menu'        => 'options-general.php',
+            'exclude_from_search' => true,
+			'capability_type'     => 'post',
+            'map_meta_cap'        => true,
+            'hierarchical'        => false,
+            'rewrite'             => [
+                'slug'       => 'site-admin',
+                'with_front' => true
+            ],
+            'query_var'           => 'site-admin',
+            'menu_position'       => 55,
+            'menu_icon'           => 'dashicons-welcome-learn-more',
+            'supports'            => [
+                'title',
+				'editor',
+				'excerpt',
+				'revisions'
+            ],
+            'taxonomies'          => [],
+        ];
+
+        // Apply a filter to arguments for customization.
+        $options = apply_filters( 'instruction_args', $options );
+
+        // Register the Instruction post type.
+        register_post_type(
+            'site_admin',
             $options
         );
 

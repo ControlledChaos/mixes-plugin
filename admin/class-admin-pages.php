@@ -600,6 +600,14 @@ class Admin_Pages {
     // Get featured image.
     private function get_column_image( $post_ID ) {
 
+		// Get the current screen as a variable.
+        $screen = get_current_screen();
+
+        // Do not apply to admin instructions post type.
+        if ( 'site_admin' == $screen->post_type ) {
+			return;
+		}
+
         // Get the post thumbnail ID as a variable.
         $post_thumbnail_id = get_post_thumbnail_id( $post_ID );
 
@@ -635,6 +643,14 @@ class Admin_Pages {
      * @return string Returns the name of the new column head.
      */
     public function image_column_head( $defaults ) {
+
+		// Get the current screen as a variable.
+        $screen = get_current_screen();
+
+        // Do not apply to admin instructions post type.
+        if ( 'site_admin' == $screen->post_type ) {
+			return $defaults;
+		}
 
         // The column heading name.
         $name    = __( 'Featured Image', 'controlled-chaos-plugin' );

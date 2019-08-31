@@ -1,6 +1,6 @@
 <?php
 /**
- * Script options page output.
+ * Script options page output
  *
  * @package    Monica_Mixes_Plugin
  * @subpackage Admin\Partials
