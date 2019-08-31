@@ -96,7 +96,10 @@ class Admin_Menu {
         add_filter( 'parent_file', [ $this, 'set_parent_file' ] );
 
         // Set the user capability for the pages.
-        add_filter( 'user_has_cap', [ $this, 'set_capability' ], 20, 4 );
+		add_filter( 'user_has_cap', [ $this, 'set_capability' ], 20, 4 );
+
+		// Remove submenu links.
+		add_action( 'admin_menu', [ $this, 'admin_submenus' ] );
 
     }
 
@@ -423,7 +426,30 @@ class Admin_Menu {
         // Return the new capabilities.
         return $caps;
 
-    }
+	}
+
+	/**
+     * Remove submenu links
+     *
+     * @since  1.0.0
+	 * @access public
+	 * @return array Returns a modified array of menu items.
+     */
+	public function admin_submenus() {
+
+		// Access global variables.
+		global $submenu;
+
+		// Remove home link
+		unset( $submenu['index.php'][0] );
+
+		// Remove updates link
+		unset( $submenu['index.php'][10] );
+
+		// Return modified array of menu items.
+		return $submenu;
+
+	}
 
 }
 
