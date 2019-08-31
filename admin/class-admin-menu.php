@@ -152,6 +152,11 @@ class Admin_Menu {
                 remove_menu_page( 'searchandfilter-settings' );
 			}
 
+			// Hide Contact Form y page.
+			if ( $options && in_array( 'contact', $options ) ) {
+                remove_menu_page( 'wpcf7' );
+			}
+
 			// Hide Theme My Login page.
 			if ( $options && in_array( 'login', $options ) ) {
                 remove_menu_page( 'theme-my-login' );
@@ -438,12 +443,14 @@ class Admin_Menu {
 	public function admin_submenus() {
 
 		// Access global variables.
-		global $submenu;
+		global $pagenow, $submenu;
 
-		// Remove home link
-		unset( $submenu['index.php'][0] );
+		// Remove home link.
+		if ( 'index.php' === $pagenow && ! isset( $_GET['page'] ) ) {
+			unset( $submenu['index.php'][0] );
+		}
 
-		// Remove updates link
+		// Remove updates link.
 		unset( $submenu['index.php'][10] );
 
 		// Return modified array of menu items.

@@ -441,6 +441,7 @@ final class Settings_Fields_ACF {
 							'tools'   => __( 'Tools', 'mixes-plugin' ),
 							'fields'  => __( 'Custom Fields', 'mixes-plugin' ),
 							'search'  => __( 'Search & Filter', 'mixes-plugin' ),
+							'contact' => __( 'Contct Forms', 'mixes-plugin' ),
 							'login'   => __( 'Theme My Login', 'mixes-plugin' )
 						],
 						'allow_custom'      => 0,
