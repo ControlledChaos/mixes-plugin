@@ -22,6 +22,7 @@ global $post;
 // Post query arguments.
 $args = [
 	'post_type'              => [ 'site_admin' ],
+	'post_status'            => [ 'private' ],
 	'nopaging'               => true,
 	'posts_per_page'         => -1,
 	'ignore_sticky_posts'    => false,
