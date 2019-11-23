@@ -72,6 +72,8 @@ class Meta_Title {
 	 */
 	public function title() {
 
+		if ( is_search() ) { return; }
+
 		// Get the current posts for author archives.
 		global $post;
 
@@ -80,6 +82,14 @@ class Meta_Title {
 			$author_id = '';
 		} else {
 			$author_id = $post->post_author;
+		}
+
+		if ( function_exists( 'get_field' ) && is_singular( 'recipe' ) ) {
+			$seo_title = get_field( 'recipe_seo_title' );
+		} elseif ( function_exists( 'get_field' ) && is_singular( 'post' ) ) {
+			$seo_title = get_field( 'blog_seo_title' );
+		} else {
+			$seo_title = '';
 		}
 
 		// Custom author title.
@@ -110,6 +120,14 @@ class Meta_Title {
 		} elseif ( is_home() ) {
 			$title = esc_html( get_the_title( get_option( 'page_for_posts' ) ) );
 
+		// Single recipe pages with SEO title.
+		} elseif ( is_singular( 'recipe' ) && ! empty( $seo_title ) ) {
+			$title = esc_html( get_bloginfo( 'name' ) . ' - ' . $seo_title );
+
+		// Single recipe pages.
+		} elseif ( is_singular( 'recipe' ) ) {
+			$title = esc_html( get_bloginfo( 'name' ) . ' - ' . get_the_title() );
+
 		// Use custom text for author pages.
 		} elseif ( is_author() ) {
 			$title = esc_html( $author_meta );
@@ -119,8 +137,12 @@ class Meta_Title {
 			$title = esc_html( get_the_archive_title() );
 
 		// Use custom text for search pages.
-		} elseif ( is_search() ) {
-			$title = esc_html( $search_meta );
+		// } elseif ( is_search() ) {
+			// $title = esc_html( $search_title );
+
+		// Single post pages with SEO title.
+		} elseif ( is_singular( 'post' ) && ! empty( $seo_title ) ) {
+			$title = esc_html( get_bloginfo( 'name' ) . ' - ' . $seo_title );
 
 		// For all else, singular, use the post title.
 		} else {

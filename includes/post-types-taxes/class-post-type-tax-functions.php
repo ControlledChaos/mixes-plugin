@@ -57,6 +57,9 @@ class Post_Type_Tax_Functions {
 	 */
 	public function __construct() {
 
+		// Include post types in search.
+		add_filter( 'pre_get_posts', [ $this, 'post_type_search' ] );
+
 		// Make Instructions post type private by default.
 		add_action( 'transition_post_status', [ $this, 'private_posts' ], 10, 3 );
 		add_action( 'post_submitbox_misc_actions', [ $this, 'private_posts_metabox' ] );
@@ -67,7 +70,25 @@ class Post_Type_Tax_Functions {
 	}
 
 	/**
+	 * Include post types in search
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  object $query The original query.
+	 * @return object $query The amended query.
+	 */
+	public function post_type_search( $query ) {
+
+		if ( $query->is_search ) {
+			$query->set( 'post_type', [ 'post', 'recipe', 'page' ] );
+		}
+
+	}
+
+	/**
 	 * Make Instructions post type private by default
+	 *
+	 *
 	 *
 	 * @since  1.0.0
 	 * @access public

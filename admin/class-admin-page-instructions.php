@@ -65,11 +65,6 @@ class Admin_Page_Instructions {
 	/**
 	 * Add a page for site settings.
 	 *
-	 * If the Advanced Custom Fields Pro plugin is active then
-	 * an ACF options page and ACF fields will be used. If not
-	 * then a default WordPress/ClassicPress admin page and the
-	 * Settings API will be used.
-	 *
 	 * Uses the universal slug partial for admin pages. Set this
      * slug in the core plugin file.
 	 *
@@ -78,14 +73,7 @@ class Admin_Page_Instructions {
 	 * @global string pagenow Gets the current admin screen URL.
 	 * @return void
 	 *
-	 * @link   https://www.advancedcustomfields.com/resources/acf_add_options_page/
-	 * @link   https://developer.wordpress.org/reference/functions/add_menu_page/
-	 * @link   https://developer.wordpress.org/reference/functions/add_submenu_page/
-	 *
-	 * @todo  Think about whether this is a good idea. Maybe it's
-	 *        better to simply provide a sample ACF page. ACF is
-	 *        certainly faster for further development but do we
-	 *        want the dependency?
+	 * @todo Variable for user role option.
 	 */
     public function settings_page() {
 
@@ -95,7 +83,7 @@ class Admin_Page_Instructions {
 			'manage_options',
 			MMP_ADMIN_SLUG . '-instructions',
 			[ $this, 'page_output' ],
-			'welcome-learn-more',
+			'dashicons-welcome-learn-more',
 			3
 		);
 

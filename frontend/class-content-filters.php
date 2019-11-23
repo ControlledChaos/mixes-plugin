@@ -33,16 +33,16 @@ class Content_Filters {
 	 */
 	public function __construct() {
 
-		// Filter the cabins for sale post type singular content.
+		// Filter the recipe post type singular content.
 		add_filter( 'the_content', [ $this, 'recipe_singular_filter' ], 10, 2 );
 
-		// Filter the cabins for sale post type archive content.
+		// Filter the recipe post type archive content.
 		add_filter( 'the_content', [ $this, 'recipe_archive_filter' ], 10, 2 );
 
 	}
 
 	/**
-	 * Filter the cabins for sale post type singular content
+	 * Filter the recipe post type singular content
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -51,7 +51,7 @@ class Content_Filters {
 	 */
 	public function recipe_singular_filter( $content ) {
 
-		// Return the default content if not cabins for sale.
+		// Return the default content if not recipe.
 		if ( ! is_singular( 'recipe' ) ) {
 			return $content;
 		}
@@ -68,7 +68,7 @@ class Content_Filters {
 	}
 
 	/**
-	 * Filter the cabins for sale post type archive content
+	 * Filter the recipe post type archive content
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -77,7 +77,7 @@ class Content_Filters {
 	 */
 	public function recipe_archive_filter( $content ) {
 
-		// Return the default content if not cabins for sale.
+		// Return the default content if not recipe.
 		if ( ! ( is_post_type_archive( 'recipe' ) || is_tax( 'recipe_type' ) ) ) {
 			return $content;
 		}

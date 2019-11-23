@@ -31,7 +31,7 @@ $images      = get_field( 'recipe_gallery' );
 ?>
 <?php if ( $description ) : ?>
 <section class="recipe-section recipe-description">
-	<h2><?php _e( 'Recipe Description', 'mixes-plugin' ); ?></h2>
+	<h2 class="screen-reader-text"><?php _e( 'Recipe Description', 'mixes-plugin' ); ?></h2>
 	<?php echo $description; ?>
 </section>
 <?php endif; ?>
@@ -86,12 +86,12 @@ if ( have_rows( 'recipe_ingredients' ) ) : ?>
 <?php endif; ?>
 
 <?php if ( $images ) : ?>
-<section id="recipe-section recipe-gallery" class=" recipe-gallery">
-	<h2><?php _e( 'Image Gallery', 'seq-pac-theme' ); ?></h2>
+<section id="recipe-gallery" class="recipe-section recipe-gallery">
+	<h2><?php _e( 'Image Gallery', 'mixes-plugin' ); ?></h2>
 	<ul class="gallery">
 		<?php foreach( $images as $image ): ?>
 			<li class="gallery-item">
-				<a data-fancybox="images" href="<?php echo $image['url']; ?>">
+				<a data-fancybox="images" data-caption="<?php echo $image['caption']; ?>" href="<?php echo $image['url']; ?>">
 					<img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
 				</a>
 			</li>
